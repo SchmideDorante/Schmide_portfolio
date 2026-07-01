@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tous les projets de Schmide Dorante — vidéo, photographie, digital." />
+  <meta name="theme-color" content="#f3ede2" />
+  <title>Projets — Schmide Dorante</title>
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="loader" id="loader" role="status" aria-label="Chargement">
+    <div class="loader-count" id="loader-count">3</div>
+  </div>
+
+  <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursor-ring" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
+  <a class="skip-link" href="#main">Aller au contenu principal</a>
+
+  <header class="header" id="header">
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="index.html" class="nav-logo" aria-label="Accueil — Schmide Dorante">
+        <span data-site-name>Schmide Dorante</span>
+      </a>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html#about" class="nav-link" data-i18n="nav.about">À propos</a></li>
+        <li><a href="index.html#skills" class="nav-link" data-i18n="nav.skills">Compétences</a></li>
+        <li><a href="index.html#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
+        <li><a href="index.html" class="nav-link nav-link-highlight" data-i18n="nav.back">Retour à l'accueil</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <div class="lang-switcher" role="group" aria-label="Langue">
+          <button class="lang-btn" data-lang="fr" aria-pressed="true">FR</button>
+          <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+          <button class="lang-btn" data-lang="kr" aria-pressed="false">KR</button>
+        </div>
+        <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="section" style="padding-top: calc(var(--nav-h) + 3rem);" aria-labelledby="projects-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-label reveal" data-i18n="projects.label">Filmographie &amp; travaux</span>
+          <h1 class="section-title reveal" id="projects-title" data-i18n="projects.title">Mes projets</h1>
+        </header>
+
+        <div class="filter-bar" id="filter-bar" role="group" aria-label="Filtrer par catégorie">
+          <button class="filter-btn" data-filter="all" aria-pressed="true" data-i18n="projects.filterAll">Tous</button>
+          <button class="filter-btn" data-filter="video" aria-pressed="false" data-i18n="projects.filterVideo">Vidéo</button>
+          <button class="filter-btn" data-filter="photo" aria-pressed="false" data-i18n="projects.filterPhoto">Photo</button>
+          <button class="filter-btn" data-filter="digital" aria-pressed="false" data-i18n="projects.filterDigital">Digital</button>
+        </div>
+
+        <div class="projects-grid" id="projects-grid" role="list" aria-label="Liste des projets"></div>
+
+        <div class="project-detail" id="project-detail">
+          <div class="container detail-inner">
+            <div class="detail-header">
+              <div>
+                <span class="detail-tagline" id="detail-tagline"></span>
+                <h2 class="detail-title" id="detail-title"></h2>
+              </div>
+              <button class="detail-close" id="detail-close" aria-label="Fermer">✕</button>
+            </div>
+            <div class="detail-body">
+              <div class="detail-visual" id="detail-visual"></div>
+              <div>
+                <dl class="detail-meta">
+                  <div class="detail-meta-item"><dt id="detail-role-label"></dt><dd id="detail-role-value"></dd></div>
+                  <div class="detail-meta-item"><dt id="detail-client-label"></dt><dd id="detail-client-value"></dd></div>
+                  <div class="detail-meta-item"><dt id="detail-year-label"></dt><dd id="detail-year-value"></dd></div>
+                  <div class="detail-meta-item"><dt id="detail-tools-label"></dt><dd id="detail-tools-value"></dd></div>
+                </dl>
+                <p class="detail-desc" id="detail-desc"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <span class="footer-logo" data-site-name>Schmide Dorante</span>
+          <p class="footer-tagline" data-i18n="footer.tagline">Réalisatrice &amp; Monteuse</p>
+        </div>
+        <nav class="footer-nav" aria-label="Pied de page">
+          <p class="footer-nav-title" data-i18n="footer.navTitle">Navigation</p>
+          <ul>
+            <li><a href="index.html#about" data-i18n="nav.about">À propos</a></li>
+            <li><a href="index.html#skills" data-i18n="nav.skills">Compétences</a></li>
+            <li><a href="index.html" data-i18n="nav.back">Retour à l'accueil</a></li>
+          </ul>
+        </nav>
+        <div class="footer-contact">
+          <p class="footer-nav-title" data-i18n="footer.contactTitle">Contact</p>
+          <ul>
+            <li><a href="#" data-site-email>email@example.com</a></li>
+            <li><a href="#" data-site-linkedin target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p data-i18n="footer.copyright">© 2026 Schmide Dorante — Tous droits réservés.</p>
+        <a href="mentions-legales.html" data-i18n="footer.legal">Mentions légales</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/content.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
