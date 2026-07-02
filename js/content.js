@@ -179,7 +179,7 @@ const CONTENT = {
       hardTitle: "Technical skills",
       softTitle: "Personal qualities",
       hard: [
-        { cat: "Post‑production", items: ["Adobe Premiere Pro", "DaVinci Resolve", "Capcut" "Photoshop", "Lightroom"] },
+        { cat: "Post‑production", items: ["Adobe Premiere Pro", "DaVinci Resolve", "Capcut", "Photoshop", "Lightroom"] },
         { cat: "Camera & sound", items: ["Camera (Sony / Canon)", "On‑set lighting", "Live sound recording", "Film photography"] },
         { cat: "Digital & motion", items: ["Vertical / social formats", "Figma", "HTML / CSS"] },
       ],
