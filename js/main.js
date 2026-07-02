@@ -359,9 +359,66 @@
     });
   }
 
+  function initTheme() {
+  const toggle = document.querySelector("#theme-toggle");
+  if (!toggle) return;
+  if (localStorage.getItem("theme") === "dark") document.documentElement.classList.add("dark");
+  const updateLabel = () => {
+    const isDark = document.documentElement.classList.contains("dark");
+    toggle.setAttribute("aria-label", isDark ? "Passer en mode clair" : "Passer en mode sombre");
+  };
+  updateLabel();
+  toggle.addEventListener("click", () => {
+    document.documentElement.classList.toggle("dark");
+    localStorage.setItem("theme", document.documentElement.classList.contains("dark") ? "dark" : "light");
+    updateLabel();
+  });
+}
+
+function initParticles(canvasId) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const ctx = canvas.getContext("2d");
+  let particles = [], animId;
+  function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+  class Particle {
+    constructor() { this.reset(true); }
+    reset(initial) {
+      this.x = Math.random() * canvas.width;
+      this.y = initial ? Math.random() * canvas.height : canvas.height + 10;
+      this.vx = (Math.random() - 0.5) * 0.4;
+      this.vy = -(Math.random() * 0.3 + 0.1);
+      this.r = Math.random() * 1.8 + 0.6;
+      this.a = Math.random() * 0.4 + 0.1;
+      this.colorSeed = Math.random();
+    }
+    update() { this.x += this.vx; this.y += this.vy; if (this.y < -5 || this.x < -5 || this.x > canvas.width + 5) this.reset(false); }
+    draw() {
+      const isDark = document.documentElement.classList.contains("dark");
+      const color = isDark ? (this.colorSeed > 0.6 ? "#e2565c" : "#d4b64c") : (this.colorSeed > 0.6 ? "#c1272d" : "#8a7a2c");
+      ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fillStyle = color; ctx.globalAlpha = isDark ? Math.min(this.a * 1.6, 0.85) : this.a;
+      ctx.fill(); ctx.globalAlpha = 1;
+    }
+  }
+  function loop() { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); animId = requestAnimationFrame(loop); }
+  resize(); particles = Array.from({ length: 60 }, () => new Particle());
+  new ResizeObserver(() => { cancelAnimationFrame(animId); resize(); loop(); }).observe(canvas.parentElement);
+  loop();
+}
+
+function initScrollIndicator() {
+  const el = document.querySelector("#scroll-indicator");
+  if (!el) return;
+  el.addEventListener("click", () => document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" }));
+}
+
   /* ---------------- Init ---------------- */
   document.addEventListener("DOMContentLoaded", () => {
     initLoader();
+    initTheme();
+    initParticles("hero-canvas");
+    initScrollIndicator();
     initCursor();
     initHeader();
     initLangSwitcher();

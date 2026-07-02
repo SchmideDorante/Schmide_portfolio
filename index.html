@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" />
 
   <link rel="stylesheet" href="css/style.css" />
+  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark')</script>
 </head>
 <body>
 
@@ -49,6 +50,14 @@
           <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
           <button class="lang-btn" data-lang="kr" aria-pressed="false">KR</button>
         </div>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Passer en mode sombre" title="Basculer le thème">
+          <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+          </svg>
+          <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
         <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Ouvrir le menu">
           <span></span><span></span><span></span>
         </button>
@@ -61,6 +70,7 @@
     <!-- HERO -->
     <section class="hero" id="hero" aria-label="Introduction">
       <div class="hero-grain" aria-hidden="true"></div>
+      <canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
       <div class="hero-inner">
         <div>
           <p class="hero-eyebrow"><span class="rec-dot" aria-hidden="true"></span><span data-i18n="hero.eyebrow">Réalisatrice · Monteuse · Photographe</span></p>
@@ -85,7 +95,7 @@
           <div class="hero-reel-caption"><span>SHOWREEL</span><span>2026</span></div>
         </div>
       </div>
-
+      
       <div class="ticker" aria-hidden="true">
         <div class="ticker-track" id="hero-ticker"></div>
       </div>

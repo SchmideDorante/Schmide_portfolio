@@ -63,7 +63,7 @@ const CONTENT = {
       sub: "Vidéo, photographie et projets digitaux — du tournage à l'étalonnage, je construis des images qui racontent une histoire.",
       ctaReel: "Voir le showreel",
       ctaCv: "Télécharger mon CV",
-      ticker: ["MONTAGE", "RÉALISATION", "PHOTOGRAPHIE", "ÉTALONNAGE", "MOTION DESIGN", "PRISE DE VUE"],
+      ticker: ["MONTAGE", "RÉALISATION", "PHOTOGRAPHIE", "ÉTALONNAGE", "PRISE DE VUE", "PROJETS DIGITAUX", "COMMUNICATION"],
     },
     about: {
       label: "Portrait",
@@ -87,9 +87,9 @@ const CONTENT = {
       hardTitle: "Compétences techniques",
       softTitle: "Qualités personnelles",
       hard: [
-        { cat: "Post‑production", items: ["Adobe Premiere Pro", "DaVinci Resolve", "After Effects", "Photoshop", "Lightroom"] },
+        { cat: "Post‑production", items: ["Adobe Premiere Pro", "DaVinci Resolve", "CAPCUT", "Photoshop", "Lightroom"] },
         { cat: "Prise de vue & son", items: ["Caméra (Sony / Canon)", "Éclairage plateau", "Prise de son direct", "Photographie argentique"] },
-        { cat: "Digital & motion", items: ["Motion design", "Formats verticaux / réseaux sociaux", "Figma", "HTML / CSS"] },
+        { cat: "Digital & motion", items: ["Formats verticaux / réseaux sociaux", "Figma", "HTML / CSS"] },
       ],
       soft: [
         "Sens du récit & du rythme", "Rigueur et sens du détail", "Travail d'équipe sur plateau",
@@ -155,7 +155,7 @@ const CONTENT = {
       sub: "Video, photography and digital projects — from set to color grade, I build images that carry a story.",
       ctaReel: "Watch the showreel",
       ctaCv: "Download my CV",
-      ticker: ["EDITING", "DIRECTING", "PHOTOGRAPHY", "COLOR GRADING", "MOTION DESIGN", "CINEMATOGRAPHY"],
+      ticker: ["EDITING", "DIRECTING", "PHOTOGRAPHY", "COLOR GRADING", "CINEMATOGRAPHY", "DIGITAL PROJETCS", "COMMUNICATION"],
     },
     about: {
       label: "Portrait",
@@ -179,9 +179,9 @@ const CONTENT = {
       hardTitle: "Technical skills",
       softTitle: "Personal qualities",
       hard: [
-        { cat: "Post‑production", items: ["Adobe Premiere Pro", "DaVinci Resolve", "After Effects", "Photoshop", "Lightroom"] },
+        { cat: "Post‑production", items: ["Adobe Premiere Pro", "DaVinci Resolve", "Capcut" "Photoshop", "Lightroom"] },
         { cat: "Camera & sound", items: ["Camera (Sony / Canon)", "On‑set lighting", "Live sound recording", "Film photography"] },
-        { cat: "Digital & motion", items: ["Motion design", "Vertical / social formats", "Figma", "HTML / CSS"] },
+        { cat: "Digital & motion", items: ["Vertical / social formats", "Figma", "HTML / CSS"] },
       ],
       soft: [
         "Sense of story & pacing", "Attention to detail", "On‑set teamwork",
@@ -273,7 +273,7 @@ const CONTENT = {
       hard: [
         { cat: "후반작업", items: ["어도비 프리미어 프로", "다빈치 리졸브", "애프터 이펙트", "포토샵", "라이트룸"] },
         { cat: "촬영 & 음향", items: ["카메라 (소니 / 캐논)", "현장 조명", "현장 음향 녹음", "필름 사진"] },
-        { cat: "디지털 & 모션", items: ["모션 디자인", "세로형·SNS 포맷", "피그마", "HTML / CSS"] },
+        { cat: "디지털 & 모션", items: ["세로형·SNS 포맷", "피그마", "HTML / CSS"] },
       ],
       soft: [
         "스토리텔링과 리듬 감각", "꼼꼼함과 디테일", "현장 팀워크",
