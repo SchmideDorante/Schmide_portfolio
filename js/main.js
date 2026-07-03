@@ -414,10 +414,58 @@ function initScrollIndicator() {
 }
 
   /* ---------------- Init ---------------- */
+  function initTyping() {
+  const el = document.getElementById("hero-typed");
+  if (!el) return;
+
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+  let timeout;
+
+  function getPhrases() {
+    return CONTENT[currentLang].hero.typed || [];
+  }
+
+  function type() {
+    const phrases = getPhrases();
+    if (!phrases.length) return;
+
+    const phrase = phrases[phraseIndex % phrases.length];
+
+    if (!deleting) {
+      el.textContent = phrase.slice(0, charIndex + 1);
+      charIndex++;
+
+      if (charIndex === phrase.length) {
+        deleting = true;
+        timeout = setTimeout(type, 1500);
+        return;
+      }
+
+      timeout = setTimeout(type, 70);
+    } else {
+      el.textContent = phrase.slice(0, charIndex - 1);
+      charIndex--;
+
+      if (charIndex === 0) {
+        deleting = false;
+        phraseIndex++;
+        timeout = setTimeout(type, 350);
+        return;
+      }
+
+      timeout = setTimeout(type, 35);
+    }
+  }
+
+  type();
+}
   document.addEventListener("DOMContentLoaded", () => {
     initLoader();
     initTheme();
     initParticles("hero-canvas");
+    initTyping();
     initScrollIndicator();
     initCursor();
     initHeader();

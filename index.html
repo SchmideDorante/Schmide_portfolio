@@ -73,33 +73,102 @@
       <canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
       <div class="hero-inner">
         <div>
-          <p class="hero-eyebrow"><span class="rec-dot" aria-hidden="true"></span><span data-i18n="hero.eyebrow">Réalisatrice · Monteuse · Photographe</span></p>
-          <h1 class="hero-title">
-            <span data-i18n="hero.titleLine1">Je filme,</span><br />
-            <span data-i18n="hero.titleLine2">je monte,</span><br />
-            <span class="accent" data-i18n="hero.titleLine3">je raconte.</span>
+          <p class="hero-eyebrow hero-greeting">
+            <span class="rec-dot" aria-hidden="true"></span>
+            <span data-i18n="hero.greeting">Bonjour, je suis</span>
+          </p>
+
+          <h1 class="hero-title hero-name">
+            Schmide <span class="accent">Dorante</span>
           </h1>
-          <p class="hero-sub" data-i18n="hero.sub">Vidéo, photographie et projets digitaux — du tournage à l'étalonnage, je construis des images qui racontent une histoire.</p>
+
+          <div class="hero-typed-wrap" aria-live="polite" aria-atomic="true">
+            <span class="hero-typed" id="hero-typed"></span>
+            <span class="typed-cursor" aria-hidden="true">|</span>
+          </div>
+
+          <p class="hero-sub hero-desc" data-i18n="hero.sub">
+            J’accompagne des projets de communication de leur conception jusqu’à leur réalisation.
+          </p>
+
           <div class="hero-cta">
-            <a class="btn btn-outline" data-site-vimeo target="_blank" rel="noopener noreferrer" data-i18n="hero.ctaReel">Voir le showreel</a>
-            <a class="btn btn-primary" data-site-cv download data-i18n="hero.ctaCv">Télécharger mon CV</a>
+            <a class="btn btn-outline" href="#projects" data-i18n="hero.ctaReel">
+              Découvrir mes projets
+            </a>
+            <a class="btn btn-primary" data-site-cv download data-i18n="hero.ctaCv">
+              Télécharger mon CV
+            </a>
+          </div>
+          <div class="hero-facts">
+              <div class="hero-fact">
+                  <span class="hero-fact-number">4+</span>
+                  <span class="hero-fact-label" data-i18n="hero.fact1">
+                      années d'expérience
+                  </span>
+              </div>
+
+              <div class="hero-fact">
+                  <span class="hero-fact-number">2000+</span>
+                  <span class="hero-fact-label" data-i18n="hero.fact2">
+                      collaborateurs engagés
+                  </span>
+              </div>
+
+              <div class="hero-fact">
+                  <span class="hero-fact-number">10+</span>
+                  <span class="hero-fact-label" data-i18n="hero.fact3">
+                      projets réalisés
+                  </span>
+              </div>
+
+              <div class="hero-fact">
+                  <span class="hero-fact-number">3</span>
+                  <span class="hero-fact-label" data-i18n="hero.fact4">
+                      langues de travail
+                  </span>
+              </div>
           </div>
         </div>
 
-        <div class="hero-reel" data-cursor-hover>
-          <span class="hero-reel-sprockets left" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>
-          <span class="hero-reel-sprockets right" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>
-          <div class="hero-reel-play" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        <div class="hero-proof-card" data-cursor-hover>
+          <div class="proof-card-header">
+            <span class="rec-dot" aria-hidden="true"></span>
+            <span>PROJECT SNAPSHOT</span>
           </div>
-          <div class="hero-reel-caption"><span>SHOWREEL</span><span>2026</span></div>
+
+          <div class="proof-card-main">
+            <p class="proof-card-label">Currently building</p>
+            <h2>Communication portfolio</h2>
+            <p>
+              A case study portfolio combining internal communication, digital projects,
+              audiovisual production and storytelling.
+            </p>
+          </div>
+
+          <div class="proof-card-list">
+            <div>
+              <span>01</span>
+              <p>Communication strategy</p>
+            </div>
+            <div>
+              <span>02</span>
+              <p>Project coordination</p>
+            </div>
+            <div>
+              <span>03</span>
+              <p>Content creation</p>
+            </div>
+            <div>
+              <span>04</span>
+              <p>Visual storytelling</p>
+            </div>
+          </div>
         </div>
-      </div>
       
-      <div class="ticker" aria-hidden="true">
-        <div class="ticker-track" id="hero-ticker"></div>
-      </div>
-    </section>
+        <div class="ticker" aria-hidden="true">
+          <div class="ticker-track" id="hero-ticker"></div>
+        </div>
+      </section>
 
     <!-- À PROPOS -->
     <section class="section" id="about" aria-labelledby="about-title">

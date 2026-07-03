@@ -1,22 +1,12 @@
-/* ============================================================
-   CONTENT.JS
-   Toutes les informations personnalisables du portfolio.
-   👉 C'est le SEUL fichier à modifier pour mettre le site à jour :
-      - tes coordonnées (SITE)
-      - ta biographie / ton parcours / tes compétences
-      - tes projets (textes + couleurs de vignette)
-   Le texte existe dans 3 langues : fr / en / kr.
-   ============================================================ */
-
 /* --------------------------------------------------------------
-   1. IDENTITÉ — à remplacer par tes vraies infos
+   1. IDENTITÉ
    -------------------------------------------------------------- */
 const SITE = {
   firstName: "Schmide",
   lastName: "Dorante",
   email: "schmidedorante@gmail.com",
-  location: "Paris, France",
-  cvFile: "assets/cv/CV_Camille_Moreau.pdf",
+  location: "Île-de-France, France",
+  cvFile: "assets/cv/CV_Schmide_Dorante.pdf",
   socials: {
     instagram: "https://instagram.com/",
     vimeo: "https://vimeo.com/",
@@ -31,12 +21,12 @@ const SITE = {
       "hue" pilote la couleur de la vignette placeholder.
    -------------------------------------------------------------- */
 const PROJECT_META = [
-  { id: "silences",   type: "video",   year: "2026", hue: 8   },
-  { id: "aftermovie", type: "video",   year: "2025", hue: 28  },
-  { id: "backstage",  type: "photo",   year: "2025", hue: 40  },
-  { id: "argentique", type: "photo",   year: "2024", hue: 190 },
-  { id: "immersif",   type: "digital", year: "2024", hue: 250 },
-  { id: "generique",  type: "digital", year: "2023", hue: 340 },
+  { id: "stellantis-internal-com", type: "digital", year: "2024–2026", hue: 8 },
+  { id: "mea-moves", type: "digital", year: "2025–2026", hue: 28 },
+  { id: "zen-break", type: "digital", year: "2025", hue: 45 },
+  { id: "when-korea-plays", type: "video", year: "2026", hue: 210 },
+  { id: "cellule-communication", type: "digital", year: "2026", hue: 260 },
+  { id: "schmide-visuals", type: "photo", year: "2025–2026", hue: 340 },
 ];
 
 /* --------------------------------------------------------------
@@ -45,37 +35,60 @@ const PROJECT_META = [
 const CONTENT = {
 
   /* ============================= FRANÇAIS ============================= */
-  fr: {
-    meta: {
-      title: "Schmide Dorante — Réalisatrice & Monteuse",
-      description: "Portfolio de Schmide Dorante, réalisatrice, monteuse et photographe — vidéo, photographie et projets digitaux.",
-    },
-    nav: {
-      about: "À propos", skills: "Compétences", projects: "Projets",
-      contact: "Contact", allProjects: "Tous les projets",
-      back: "Retour à l'accueil",
-    },
-    hero: {
-      eyebrow: "Réalisatrice · Monteuse · Photographe",
-      titleLine1: "Je filme,",
-      titleLine2: "je monte,",
-      titleLine3: "je raconte.",
-      sub: "Vidéo, photographie et projets digitaux — du tournage à l'étalonnage, je construis des images qui racontent une histoire.",
-      ctaReel: "Voir le showreel",
-      ctaCv: "Télécharger mon CV",
-      ticker: ["MONTAGE", "RÉALISATION", "PHOTOGRAPHIE", "ÉTALONNAGE", "PRISE DE VUE", "PROJETS DIGITAUX", "COMMUNICATION"],
-    },
-    about: {
-      label: "Portrait",
-      title: "À propos de moi",
-      p1: "Je suis réalisatrice et monteuse, passionnée par le récit visuel sous toutes ses formes — du court‑métrage à la captation événementielle, en passant par la photographie de plateau.",
-      p2: "Formée à l'image et au son, j'aime autant être derrière la caméra que devant mon poste de montage : chaque projet est une nouvelle façon de raconter une histoire, de trouver le bon rythme, la bonne lumière, le bon cadre.",
-      p3: "Curieuse et rigoureuse, je navigue avec plaisir entre vidéo, photographie argentique et projets digitaux — toujours au service d'une idée claire.",
-      stat1: "projets réalisés",
-      stat2: "ans d'expérience",
-      timelineTitle: "Mon parcours",
-      scLabel: "SC",
-    },
+fr: {
+  meta: {
+    title: "Schmide Dorante — Communication digitale & projets créatifs",
+    description: "Portfolio de Schmide Dorante : communication digitale, gestion de projet, audiovisuel, photographie et projets éditoriaux.",
+  },
+  nav: {
+    about: "À propos",
+    skills: "Compétences",
+    projects: "Projets",
+    contact: "Contact",
+    allProjects: "Tous les projets",
+    back: "Retour à l'accueil",
+  },
+hero: {
+  greeting: "Bonjour, je suis",
+  typed: [
+    "Communication digitale",
+    "Gestion de projet",
+    "Communication interne",
+    "Création de contenus",
+    "Audiovisuel",
+    "Storytelling"
+  ],
+  sub: "J'accompagne des projets de communication de leur conception à leur réalisation. De la stratégie à la création de contenus, je transforme les idées en expériences engageantes grâce à la communication digitale, l'audiovisuel et le storytelling.",
+  ctaReel: "Découvrir mes projets",
+  ctaCv: "Télécharger mon CV",
+  fact1: "Années d'expérience",
+  fact2: "Collaborateurs engagés",
+  fact3: "Projets réalisés",
+  fact4: "Langues de travail",
+
+  ticker: [
+    "COMMUNICATION DIGITALE",
+    "GESTION DE PROJET",
+    "CRÉATION DE CONTENUS",
+    "COMMUNICATION INTERNE",
+    "VIDÉO",
+    "PHOTOGRAPHIE",
+    "STORYTELLING",
+    "REPORTING",
+    "DOCUMENTAIRE"
+  ],
+},
+  about: {
+    label: "Profil",
+    title: "À propos de moi",
+    p1: "Je suis spécialisée en communication digitale et gestion de projet, avec une forte sensibilité pour l’audiovisuel, la photographie et le storytelling.",
+    p2: "Mon parcours me permet de passer de la stratégie à la production : cadrer un besoin, coordonner les parties prenantes, créer des contenus, suivre les résultats et valoriser un projet de manière claire.",
+    p3: "Je construis mon portfolio comme un ensemble de case studies : contexte, objectifs, rôle, livrables, contraintes, résultats et apprentissages.",
+    stat1: "projets menés",
+    stat2: "ans d'expérience",
+    timelineTitle: "Mon parcours",
+    scLabel: "EXP",
+  },
     timeline: [
       { period: "2025 — 2026", role: "Monteuse & Réalisatrice", place: "Freelance", type: "Indépendante", desc: "Montage, étalonnage et réalisation pour clients culturels et corporate. Direction de projets vidéo de A à Z." },
       { period: "2023 — 2025", role: "Formation Cinéma & Audiovisuel", place: "École de cinéma", type: "Formation", desc: "Spécialisation montage & réalisation, initiation à la prise de vue et au son direct." },
@@ -83,21 +96,95 @@ const CONTENT = {
       { period: "2022", role: "Stage prise de vue & photographie", place: "Agence de production", type: "Stage · 4 mois", desc: "Captation événementielle, photographie de plateau, gestion de matériel." },
     ],
     skills: {
-      label: "Boîte à outils",
-      hardTitle: "Compétences techniques",
-      softTitle: "Qualités personnelles",
+      label: "Expertise",
+      hardTitle: "Compétences professionnelles",
+      softTitle: "Soft skills",
+
       hard: [
-        { cat: "Post‑production", items: ["Adobe Premiere Pro", "DaVinci Resolve", "CAPCUT", "Photoshop", "Lightroom"] },
-        { cat: "Prise de vue & son", items: ["Caméra (Sony / Canon)", "Éclairage plateau", "Prise de son direct", "Photographie argentique"] },
-        { cat: "Digital & motion", items: ["Formats verticaux / réseaux sociaux", "Figma", "HTML / CSS"] },
+
+        {
+          cat: "Communication & stratégie",
+          items: [
+            "Communication interne",
+            "Communication digitale",
+            "Création de contenus",
+            "Storytelling",
+            "Stratégie éditoriale",
+            "Reporting & KPI"
+          ]
+        },
+
+        {
+          cat: "Gestion de projet",
+          items: [
+            "Coordination de projets",
+            "Planification",
+            "Gestion des parties prenantes",
+            "Organisation d'événements",
+            "Gestion des priorités",
+            "Méthodes Agile"
+          ]
+        },
+
+        {
+          cat: "Audiovisuel",
+          items: [
+            "Production vidéo",
+            "Montage",
+            "Photographie",
+            "Interview",
+            "Color grading",
+            "Sous-titrage multilingue"
+          ]
+        },
+
+        {
+          cat: "Développement web",
+          items: [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Responsive Design",
+            "Accessibilité",
+            "UX/UI"
+          ]
+        },
+
+        {
+          cat: "Logiciels",
+          items: [
+            "Adobe Premiere Pro",
+            "Photoshop",
+            "Lightroom",
+            "Canva",
+            "Figma",
+            "Microsoft 365",
+            "SharePoint",
+            "Teams",
+            "Notion"
+          ]
+        }
+
       ],
+
       soft: [
-        "Sens du récit & du rythme", "Rigueur et sens du détail", "Travail d'équipe sur plateau",
-        "Gestion de projet & délais", "Curiosité créative", "Adaptabilité terrain",
-      ],
+
+        "Autonomie",
+        "Gestion de projet",
+        "Esprit d'équipe",
+        "Organisation",
+        "Esprit d'analyse",
+        "Communication interculturelle",
+        "Coordination d'équipes",
+        "Créativité",
+        "Force de proposition",
+        "Adaptabilité",
+        "Résolution de problèmes",
+        "Gestion des priorités"
+      ]
     },
     projects: {
-      label: "Filmographie & travaux",
+      label: "Case studies & réalisations",
       title: "Mes projets",
       viewAll: "Voir tous les projets →",
       viewProject: "Voir le projet",
@@ -106,16 +193,61 @@ const CONTENT = {
       filterPhoto: "Photo",
       filterDigital: "Digital",
       close: "Fermer",
-      role: "Rôle", client: "Client", year: "Année", tools: "Outils",
+      role: "Rôle",
+      client: "Contexte",
+      year: "Année",
+      tools: "Outils",
       list: [
-        { title: "Silences", tagline: "Court‑métrage", desc: "Montage et étalonnage d'un court‑métrage dramatique tourné en 3 jours. Travail sur le rythme et le silence comme éléments narratifs à part entière.", role: "Montage & étalonnage", client: "Production indépendante", tools: "Premiere Pro, DaVinci Resolve" },
-        { title: "Aftermovie — Festival Nuits Sonores", tagline: "Captation & montage", desc: "Captation multi‑caméra d'un festival de musique électronique et montage d'un aftermovie de 2 minutes livré sous 48h.", role: "Captation & montage", client: "Festival Nuits Sonores", tools: "Sony FX3, Premiere Pro" },
-        { title: "Backstage", tagline: "Série de portraits", desc: "Série de portraits en noir et blanc réalisée en coulisses d'un défilé, entre spontanéité et composition soignée.", role: "Photographie de plateau", client: "Maison de mode", tools: "Reflex 35mm, Lightroom" },
-        { title: "Contretype", tagline: "Série argentique", desc: "Série personnelle explorant la texture et le grain de la pellicule argentique en environnement urbain.", role: "Photographie & développement", client: "Projet personnel", tools: "Pellicule argentique, chambre noire" },
-        { title: "Doc Immersif", tagline: "Web documentaire", desc: "Conception d'une expérience web interactive mêlant vidéo, scroll storytelling et sound design pour un documentaire de fin d'études.", role: "Réalisation & intégration web", client: "Projet de fin d'études", tools: "HTML/CSS, After Effects" },
-        { title: "Identité Générique TV", tagline: "Motion design", desc: "Création d'un générique animé pour une émission courte, de la recherche graphique à l'export broadcast.", role: "Motion design", client: "Chaîne locale", tools: "After Effects, Illustrator" },
-      ],
-    },
+          {
+        title: "Stellantis — Communication interne",
+        tagline: "Communication digitale & coordination",
+        desc: "Contribution à des projets de communication interne autour du bien-être, de la santé et de l’engagement collaborateur au sein d’un environnement international.",
+        role: "Coordination, création de contenus, reporting",
+        client: "Alternance — Stellantis MEA",
+        tools: "Canva, PowerPoint, Teams, SharePoint, Excel"
+      },
+      {
+        title: "MEA Moves",
+        tagline: "Challenge interne international",
+        desc: "Coordination de plusieurs éditions d’un challenge collaborateur autour de l’activité physique, de l’engagement et de la communication interne.",
+        role: "Coordination projet, suivi KPI, communication",
+        client: "Stellantis MEA",
+        tools: "SquadEasy, Excel, PowerPoint, Canva"
+      },
+      {
+        title: "Zen Break Program",
+        tagline: "Programme bien-être collaborateur",
+        desc: "Pilotage et valorisation d’un programme de pauses bien-être : sessions de respiration, méditation, stretching et self-massage, avec suivi de participation et satisfaction.",
+        role: "Suivi projet, communication, analyse des retours",
+        client: "Stellantis MEA",
+        tools: "Forms, Excel, Canva, PowerPoint"
+      },
+      {
+        title: "Quand la Corée joue",
+        tagline: "Documentaire",
+        desc: "Documentaire étudiant sur la société coréenne à travers les jeux : recherche, interviews, tournage, montage, sous-titrage et post-production.",
+        role: "Réalisation, montage, traduction, sous-titrage",
+        client: "Projet universitaire — Master CMW",
+        tools: "Premiere Pro, Audition, caméra, SRT"
+      },
+      {
+        title: "Cellule Communication",
+        tagline: "Stratégie digitale & projet web",
+        desc: "Projet collectif autour d’une stratégie de communication digitale, avec analyse, production de contenus, recommandations et présentation finale.",
+        role: "Stratégie, contenus, analyse, présentation",
+        client: "Projet universitaire",
+        tools: "Notion, Canva, PowerPoint, réseaux sociaux"
+      },
+      {
+        title: "Schmide Visuals",
+        tagline: "Photographie & vidéo freelance",
+        desc: "Création de contenus photo et vidéo : portraits, événements, sport, propositions commerciales et retouches.",
+        role: "Photographie, vidéo, retouche, relation client",
+        client: "Projet personnel / freelance",
+        tools: "Sony ZV-E10, Lightroom, Photoshop, Premiere Pro"
+      }
+    ],
+  },
     contact: {
       label: "Parlons‑en", title: "Me contacter",
       desc: "Un projet, un tournage, une opportunité ? N'hésitez pas à me contacter.",
