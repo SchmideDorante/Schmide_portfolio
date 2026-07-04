@@ -69,39 +69,40 @@
           <span class="section-label reveal" data-i18n="projects.label">Filmographie &amp; travaux</span>
           <h1 class="section-title reveal" id="projects-title" data-i18n="projects.title">Mes projets</h1>
         </header>
-
+        <section class="featured-project reveal">
+          <div class="featured-content">
+            <span class="featured-label">
+              Featured Experience
+            </span>
+            <h2 class="featured-title">
+              Stellantis — Internal Communication
+            </h2>
+            <p class="featured-desc">
+              Deux années passées à coordonner des projets de communication interne, des campagnes wellbeing et des initiatives digitales à l'échelle Middle East & Africa.
+            </p>
+            <a
+              href="case-study.html?id=stellantis-internal-com"
+              class="btn btn-primary">
+              Voir le case study
+            </a>
+          </div>
+          <div class="featured-image">
+              <img
+                src="assets/img/projects/stellantis/hero.jpg"
+                alt="Stellantis">
+          </div>
+        </section>
+        
         <div class="filter-bar" id="filter-bar" role="group" aria-label="Filtrer par catégorie">
           <button class="filter-btn" data-filter="all" aria-pressed="true" data-i18n="projects.filterAll">Tous</button>
-          <button class="filter-btn" data-filter="video" aria-pressed="false" data-i18n="projects.filterVideo">Vidéo</button>
-          <button class="filter-btn" data-filter="photo" aria-pressed="false" data-i18n="projects.filterPhoto">Photo</button>
+          <button class="filter-btn" data-filter="communication" aria-pressed="false" data-i18n="projects.filterCommunication">Communication</button>
+          <button class="filter-btn" data-filter="video" aria-pressed="false" data-i18n="projects.filterVideo">Audiovisuel</button>
+          <button class="filter-btn" data-filter="photo" aria-pressed="false" data-i18n="projects.filterPhoto">Photographie</button>
           <button class="filter-btn" data-filter="digital" aria-pressed="false" data-i18n="projects.filterDigital">Digital</button>
         </div>
 
         <div class="projects-grid" id="projects-grid" role="list" aria-label="Liste des projets"></div>
-
-        <div class="project-detail" id="project-detail">
-          <div class="container detail-inner">
-            <div class="detail-header">
-              <div>
-                <span class="detail-tagline" id="detail-tagline"></span>
-                <h2 class="detail-title" id="detail-title"></h2>
-              </div>
-              <button class="detail-close" id="detail-close" aria-label="Fermer">✕</button>
-            </div>
-            <div class="detail-body">
-              <div class="detail-visual" id="detail-visual"></div>
-              <div>
-                <dl class="detail-meta">
-                  <div class="detail-meta-item"><dt id="detail-role-label"></dt><dd id="detail-role-value"></dd></div>
-                  <div class="detail-meta-item"><dt id="detail-client-label"></dt><dd id="detail-client-value"></dd></div>
-                  <div class="detail-meta-item"><dt id="detail-year-label"></dt><dd id="detail-year-value"></dd></div>
-                  <div class="detail-meta-item"><dt id="detail-tools-label"></dt><dd id="detail-tools-value"></dd></div>
-                </dl>
-                <p class="detail-desc" id="detail-desc"></p>
-              </div>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </section>
   </main>
@@ -135,7 +136,8 @@
       </div>
     </div>
   </footer>
-
+  <script src="js/site.js"></script>
+  <script src="js/projects.js"></script>
   <script src="js/content.js"></script>
   <script src="js/main.js"></script>
 </body>

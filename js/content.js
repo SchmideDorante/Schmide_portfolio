@@ -1,35 +1,4 @@
 /* --------------------------------------------------------------
-   1. IDENTITÉ
-   -------------------------------------------------------------- */
-const SITE = {
-  firstName: "Schmide",
-  lastName: "Dorante",
-  email: "schmidedorante@gmail.com",
-  location: "Île-de-France, France",
-  cvFile: "assets/cv/CV_Schmide_Dorante.pdf",
-  socials: {
-    instagram: "https://instagram.com/",
-    vimeo: "https://vimeo.com/",
-    linkedin: "https://www.linkedin.com/",
-  },
-};
-
-/* --------------------------------------------------------------
-   2. PROJETS — texte identique dans les 3 langues sauf
-      title / category / tagline / description qui sont traduits
-      plus bas dans CONTENT.<lang>.projects (même ordre, même id).
-      "hue" pilote la couleur de la vignette placeholder.
-   -------------------------------------------------------------- */
-const PROJECT_META = [
-  { id: "stellantis-internal-com", type: "digital", year: "2024–2026", hue: 8 },
-  { id: "mea-moves", type: "digital", year: "2025–2026", hue: 28 },
-  { id: "zen-break", type: "digital", year: "2025", hue: 45 },
-  { id: "when-korea-plays", type: "video", year: "2026", hue: 210 },
-  { id: "cellule-communication", type: "digital", year: "2026", hue: 260 },
-  { id: "schmide-visuals", type: "photo", year: "2025–2026", hue: 340 },
-];
-
-/* --------------------------------------------------------------
    3. CONTENU TRILINGUE
    -------------------------------------------------------------- */
 const CONTENT = {
@@ -50,21 +19,9 @@ fr: {
   },
 hero: {
   greeting: "Bonjour, je suis",
-  typed: [
-    "Communication digitale",
-    "Gestion de projet",
-    "Communication interne",
-    "Création de contenus",
-    "Audiovisuel",
-    "Storytelling"
-  ],
   sub: "J'accompagne des projets de communication de leur conception à leur réalisation. De la stratégie à la création de contenus, je transforme les idées en expériences engageantes grâce à la communication digitale, l'audiovisuel et le storytelling.",
   ctaReel: "Découvrir mes projets",
   ctaCv: "Télécharger mon CV",
-  fact1: "Années d'expérience",
-  fact2: "Collaborateurs engagés",
-  fact3: "Projets réalisés",
-  fact4: "Langues de travail",
 
   ticker: [
     "COMMUNICATION DIGITALE",
@@ -183,14 +140,15 @@ hero: {
         "Gestion des priorités"
       ]
     },
-    projects: {
+    projectsPage: {
       label: "Case studies & réalisations",
       title: "Mes projets",
       viewAll: "Voir tous les projets →",
       viewProject: "Voir le projet",
       filterAll: "Tous",
-      filterVideo: "Vidéo",
-      filterPhoto: "Photo",
+      filterCommunication: "Communication",
+      filterVideo: "Audiovisuel",
+      filterPhoto: "Photographie",
       filterDigital: "Digital",
       close: "Fermer",
       role: "Rôle",
@@ -249,23 +207,196 @@ hero: {
     ],
   },
     contact: {
-      label: "Parlons‑en", title: "Me contacter",
-      desc: "Un projet, un tournage, une opportunité ? N'hésitez pas à me contacter.",
-      infoTitle: "Retrouvez‑moi sur",
-      formName: "Nom", formNamePh: "Votre nom complet",
-      formEmail: "E‑mail", formEmailPh: "votre@email.com",
-      formMessage: "Message", formMessagePh: "Parlez‑moi de votre projet…",
+      label: "Parlons-en",
+      title: "Me contacter",
+      desc: "Une opportunité, un projet de communication ou une collaboration ? N'hésitez pas à me contacter.",
+      infoTitle: "Retrouvez-moi sur",
+      formName: "Nom",
+      formNamePh: "Votre nom complet",
+      formEmail: "E-mail",
+      formEmailPh: "votre@email.com",
+      formMessage: "Message",
+      formMessagePh: "Parlez-moi de votre projet ou de votre opportunité…",
       send: "Envoyer",
-      success: "Votre message a bien été envoyé ! Je vous répondrai dès que possible. 🎬",
+      success: "Votre message a bien été envoyé ! Je vous répondrai dès que possible.",
       errorRequired: "Ce champ est requis.",
-      errorEmail: "Merci d'indiquer une adresse e‑mail valide.",
+      errorEmail: "Merci d'indiquer une adresse e-mail valide.",
     },
     footer: {
-      tagline: "Réalisatrice & Monteuse",
+      tagline: "Communication digitale & projets créatifs",
       navTitle: "Navigation", contactTitle: "Contact",
       copyright: "© 2026 Schmide Dorante — Tous droits réservés.",
       legal: "Mentions légales",
     },
+    projectDetails: {
+
+  "stellantis-internal-com": {
+
+    hero: {
+      eyebrow:"Case Study",
+      title: "Internal Communication at Stellantis",
+      subtitle: "Middle East & Africa",
+      intro:
+        "Coordination de projets de communication interne et d’initiatives wellbeing à l’échelle Middle East & Africa."
+    },
+
+    overview: {
+      client: "Stellantis",
+      role: "Digital Communication Project Coordinator",
+      duration: "2024 – 2026",
+      region: "Middle East & Africa",
+      languages: [
+        "Français",
+        "English"
+      ],
+      tools: [
+        "Canva",
+        "PowerPoint",
+        "Microsoft Teams",
+        "SharePoint",
+        "Excel"
+      ]
+    },
+
+    context: {
+      title: "Contexte",
+      text:
+        "Au sein de l’équipe Wellbeing Middle East & Africa, j’ai participé à la coordination de projets de communication interne visant à promouvoir la santé, le bien-être et l’engagement des collaborateurs dans plusieurs pays de la région."
+    },
+
+    objectives: {
+      title: "Objectifs",
+      items: [
+        "Renforcer l’engagement des collaborateurs.",
+        "Valoriser les initiatives Wellbeing.",
+        "Créer des supports de communication cohérents.",
+        "Mesurer les performances grâce aux KPI."
+      ]
+    },
+
+    role: {
+      title: "Mon rôle",
+      cards: [
+
+        {
+          title: "Gestion de projet",
+          description:
+            "Coordination des projets, suivi des plannings et échanges avec les différentes parties prenantes."
+        },
+
+        {
+          title: "Communication",
+          description:
+            "Création de newsletters, contenus Teams, campagnes internes et supports de communication."
+        },
+
+        {
+          title: "Création de contenus",
+          description:
+            "Production de vidéos, présentations, supports visuels et contenus digitaux."
+        },
+
+        {
+          title: "Reporting",
+          description:
+            "Suivi des KPI, analyse des résultats et synthèse des retours collaborateurs."
+        }
+
+      ]
+    },
+
+    process: {
+      title: "Processus",
+      steps: [
+
+        {
+          title: "Analyse",
+          description:
+            "Compréhension des besoins et définition des objectifs."
+        },
+
+        {
+          title: "Conception",
+          description:
+            "Création des supports de communication adaptés aux différentes entités."
+        },
+
+        {
+          title: "Déploiement",
+          description:
+            "Coordination du lancement des campagnes auprès des différents pays."
+        },
+
+        {
+          title: "Mesure",
+          description:
+            "Analyse des KPI et amélioration continue."
+        }
+
+      ]
+    },
+
+    deliverables: {
+      title: "Livrables",
+      items: [
+        "Newsletters",
+        "Présentations PowerPoint",
+        "Supports de communication",
+        "Vidéos",
+        "Reporting KPI",
+        "Pages SharePoint",
+        "Communication Microsoft Teams"
+      ]
+    },
+
+    kpis: {
+      title: "Résultats",
+      items: [
+        {
+          value: "2003",
+          label: "Participants"
+        },
+        {
+          value: "490",
+          label: "Participants actifs"
+        },
+        {
+          value: "98 %",
+          label: "Satisfaction"
+        }
+      ]
+    },
+
+    challenges: {
+      title: "Défis",
+      items: [
+
+        {
+          problem:
+            "Coordonner plusieurs pays de la région MEA.",
+          solution:
+            "Mise en place d’une communication centralisée et d’un suivi régulier."
+        },
+
+        {
+          problem:
+            "Maintenir l’engagement sur plusieurs semaines.",
+          solution:
+            "Création de contenus réguliers et suivi des indicateurs."
+        }
+
+      ]
+    },
+
+    reflection: {
+      title: "Ce que cette expérience m’a appris",
+      text:
+        "Cette expérience a renforcé mes compétences en gestion de projet, coordination internationale, communication interne et pilotage d’initiatives digitales à grande échelle."
+    }
+
+  }
+
+}
   },
 
   /* ============================== ENGLISH ============================== */

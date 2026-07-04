@@ -138,7 +138,7 @@
 
   function projectCardHTML(project, lang) {
     const t = CONTENT[lang].projects;
-    const typeLabel = { video: t.filterVideo, photo: t.filterPhoto, digital: t.filterDigital }[project.type];
+    const typeLabel = { communication: t.filterCommunication, video: t.filterVideo, photo: t.filterPhoto, digital: t.filterDigital }[project.type];
     return `
       <button class="film-frame reveal" type="button" data-id="${project.id}" aria-haspopup="true">
         <span class="frame-visual">
@@ -165,7 +165,9 @@
     if (limit) projects = projects.slice(0, limit);
     grid.innerHTML = projects.map((p) => projectCardHTML(p, lang)).join("");
     $$(".film-frame", grid).forEach((btn) =>
-      btn.addEventListener("click", () => openDetail(btn.dataset.id))
+      btn.addEventListener("click", () => {
+        window.location.href = `case-study.html?id=${btn.dataset.id}`;
+      })
     );
   }
 
@@ -465,12 +467,10 @@ function initScrollIndicator() {
     initLoader();
     initTheme();
     initParticles("hero-canvas");
-    initTyping();
     initScrollIndicator();
     initCursor();
     initHeader();
     initLangSwitcher();
-    initDetailClose();
     initFilters();
     initContactForm();
     bindContactInfo();

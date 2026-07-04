@@ -1,0 +1,143 @@
+/* ---------- Case study pages ---------- */
+
+.case-hero {
+  padding: calc(var(--nav-h) + 5rem) 0 5rem;
+  background: var(--paper);
+}
+
+.case-hero-inner {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.case-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4.6rem);
+  line-height: 1.05;
+  max-width: 760px;
+}
+
+.case-intro {
+  margin-top: 1.6rem;
+  max-width: 620px;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+.case-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.4rem;
+  margin-top: 3rem;
+}
+
+.case-meta-grid div {
+  border-top: 1px solid var(--line);
+  padding-top: 1rem;
+}
+
+.case-meta-grid span {
+  font-family: var(--font-mono);
+  font-size: .65rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--rec);
+}
+
+.case-meta-grid p {
+  margin-top: .4rem;
+  color: var(--ink);
+  font-size: .9rem;
+}
+
+.case-hero-visual {
+  background: var(--dark);
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.case-hero-visual img {
+  max-width: 260px;
+  width: 100%;
+  object-fit: contain;
+}
+
+.case-section {
+  padding: 5rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.case-section-alt {
+  background: var(--paper-2);
+}
+
+.case-grid {
+  display: grid;
+  grid-template-columns: .35fr .65fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.case-grid h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.case-grid > p {
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.case-list {
+  display: grid;
+  gap: .8rem;
+}
+
+.case-list p {
+  border-top: 1px solid var(--line);
+  padding-top: .9rem;
+  color: var(--ink);
+}
+
+.case-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+}
+
+.case-cards article {
+  border: 1px solid var(--line);
+  padding: 1.5rem;
+  background: var(--paper);
+}
+
+.case-cards h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  margin-bottom: .7rem;
+}
+
+.case-cards p {
+  color: var(--ink-soft);
+  font-size: .9rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .case-hero-inner,
+  .case-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .case-meta-grid,
+  .case-cards {
+    grid-template-columns: 1fr;
+  }
+}
