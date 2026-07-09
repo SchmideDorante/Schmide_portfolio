@@ -244,6 +244,18 @@ html.dark .theme-toggle .icon-moon { opacity: 1; transform: scale(1) rotate(0); 
   color: var(--on-dark-soft); display: flex; justify-content: space-between;
 }
 
+.hero-photo {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--paper-2);
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* Ticker (timecode / crédits défilants) */
 .ticker { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; margin-top: 4rem; background: var(--paper-2); }
 .ticker-track { display: flex; align-items: center; gap: 2.2rem; width: max-content; padding: .85rem 0; animation: tickerScroll 26s linear infinite; }
