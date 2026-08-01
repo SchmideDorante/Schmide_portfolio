@@ -1,21 +1,16 @@
-/* --------------------------------------------------------------
-   3. CONTENU TRILINGUE
-   -------------------------------------------------------------- */
 const CONTENT = {
-
-  /* ============================= FRANÇAIS ============================= */
 fr: {
   meta: {
     title: "Schmide Dorante — Communication digitale & projets créatifs",
     description: "Portfolio de Schmide Dorante : communication digitale, gestion de projet, audiovisuel, photographie et projets éditoriaux.",
   },
   nav: {
-    about: "À propos",
+    about: "Mon parcours",
     skills: "Compétences",
     projects: "Projets",
     contact: "Contact",
-    allProjects: "Tous les projets",
-    back: "Retour à l'accueil",
+    allProjects: "Tous les projets →",
+    back: "← Retour à l'accueil",
   },
 hero: {
   greeting: "Bonjour, je suis",
@@ -36,11 +31,11 @@ hero: {
   ],
 },
   about: {
-    label: "Profil",
-    title: "À propos de moi",
-    p1: "Je suis spécialisée en communication digitale et gestion de projet, avec une forte sensibilité pour l’audiovisuel, la photographie et le storytelling.",
-    p2: "Mon parcours me permet de passer de la stratégie à la production : cadrer un besoin, coordonner les parties prenantes, créer des contenus, suivre les résultats et valoriser un projet de manière claire.",
-    p3: "Je construis mon portfolio comme un ensemble de case studies : contexte, objectifs, rôle, livrables, contraintes, résultats et apprentissages.",
+    label: "01 — Profil",
+    title: "Transformer des idées en projets",
+    p1: "Diplômée d'un Master en Anglais, Arts et Médias, puis d'un Master en Cultures et Métiers du Web, j'ai progressivement construit un profil à la croisée de la communication, de la gestion de projet et de la création de contenus.",
+    p2: "Au cours de mes expériences, notamment chez Stellantis, j'ai coordonné des projets de communication interne déployés à l'échelle internationale, en accompagnant leur conception, leur production et leur diffusion auprès de plusieurs milliers de collaborateurs.",
+    p3: "Aujourd'hui, je souhaite poursuivre cette démarche : concevoir des stratégies de communication, piloter des projets et produire des contenus qui créent de l'engagement et donnent du sens aux messages.",
     stat1: "projets menés",
     stat2: "ans d'expérience",
     timelineTitle: "Mon parcours",
@@ -52,162 +47,192 @@ hero: {
       { period: "2023", role: "Assistante monteuse", place: "Studio de post‑production", type: "CDD · 8 mois", desc: "Dérushage, montage off, préparation d'étalonnage sur documentaires et publicités." },
       { period: "2022", role: "Stage prise de vue & photographie", place: "Agence de production", type: "Stage · 4 mois", desc: "Captation événementielle, photographie de plateau, gestion de matériel." },
     ],
-    skills: {
-      label: "Expertise",
-      hardTitle: "Compétences professionnelles",
-      softTitle: "Soft skills",
 
-      hard: [
+  skills: {
+  label: "02 — Compétences",
+  title: "Ce que je sais faire",
+  softTitle: "Ma façon de travailler",
 
-        {
-          cat: "Communication & stratégie",
-          items: [
-            "Communication interne",
-            "Communication digitale",
-            "Création de contenus",
-            "Storytelling",
-            "Stratégie éditoriale",
-            "Reporting & KPI"
-          ]
-        },
-
-        {
-          cat: "Gestion de projet",
-          items: [
-            "Coordination de projets",
-            "Planification",
-            "Gestion des parties prenantes",
-            "Organisation d'événements",
-            "Gestion des priorités",
-            "Méthodes Agile"
-          ]
-        },
-
-        {
-          cat: "Audiovisuel",
-          items: [
-            "Production vidéo",
-            "Montage",
-            "Photographie",
-            "Interview",
-            "Color grading",
-            "Sous-titrage multilingue"
-          ]
-        },
-
-        {
-          cat: "Développement web",
-          items: [
-            "HTML",
-            "CSS",
-            "JavaScript",
-            "Responsive Design",
-            "Accessibilité",
-            "UX/UI"
-          ]
-        },
-
-        {
-          cat: "Logiciels",
-          items: [
-            "Adobe Premiere Pro",
-            "Photoshop",
-            "Lightroom",
-            "Canva",
-            "Figma",
-            "Microsoft 365",
-            "SharePoint",
-            "Teams",
-            "Notion"
-          ]
-        }
-
-      ],
-
-      soft: [
-
-        "Autonomie",
-        "Gestion de projet",
-        "Esprit d'équipe",
-        "Organisation",
-        "Esprit d'analyse",
-        "Communication interculturelle",
-        "Coordination d'équipes",
-        "Créativité",
-        "Force de proposition",
-        "Adaptabilité",
-        "Résolution de problèmes",
-        "Gestion des priorités"
+  hard: [
+    {
+      cat: "Communication & stratégie",
+      items: [
+        "Communication interne",
+        "Communication digitale",
+        "Création de contenus",
+        "Storytelling",
+        "Stratégie éditoriale",
+        "Reporting & KPI"
       ]
     },
-    projectsPage: {
-      label: "Case studies & réalisations",
-      title: "Mes projets",
-      viewAll: "Voir tous les projets →",
-      viewProject: "Voir le projet",
-      filterAll: "Tous",
-      filterCommunication: "Communication",
-      filterVideo: "Audiovisuel",
-      filterPhoto: "Photographie",
-      filterDigital: "Digital",
-      close: "Fermer",
-      role: "Rôle",
-      client: "Contexte",
-      year: "Année",
-      tools: "Outils",
-      list: [
-          {
-        title: "Stellantis — Communication interne",
-        tagline: "Communication digitale & coordination",
-        desc: "Contribution à des projets de communication interne autour du bien-être, de la santé et de l’engagement collaborateur au sein d’un environnement international.",
-        role: "Coordination, création de contenus, reporting",
-        client: "Alternance — Stellantis MEA",
-        tools: "Canva, PowerPoint, Teams, SharePoint, Excel"
-      },
-      {
-        title: "MEA Moves",
-        tagline: "Challenge interne international",
-        desc: "Coordination de plusieurs éditions d’un challenge collaborateur autour de l’activité physique, de l’engagement et de la communication interne.",
-        role: "Coordination projet, suivi KPI, communication",
-        client: "Stellantis MEA",
-        tools: "SquadEasy, Excel, PowerPoint, Canva"
-      },
-      {
-        title: "Zen Break Program",
-        tagline: "Programme bien-être collaborateur",
-        desc: "Pilotage et valorisation d’un programme de pauses bien-être : sessions de respiration, méditation, stretching et self-massage, avec suivi de participation et satisfaction.",
-        role: "Suivi projet, communication, analyse des retours",
-        client: "Stellantis MEA",
-        tools: "Forms, Excel, Canva, PowerPoint"
-      },
-      {
-        title: "Quand la Corée joue",
-        tagline: "Documentaire",
-        desc: "Documentaire étudiant sur la société coréenne à travers les jeux : recherche, interviews, tournage, montage, sous-titrage et post-production.",
-        role: "Réalisation, montage, traduction, sous-titrage",
-        client: "Projet universitaire — Master CMW",
-        tools: "Premiere Pro, Audition, caméra, SRT"
-      },
-      {
-        title: "Cellule Communication",
-        tagline: "Stratégie digitale & projet web",
-        desc: "Projet collectif autour d’une stratégie de communication digitale, avec analyse, production de contenus, recommandations et présentation finale.",
-        role: "Stratégie, contenus, analyse, présentation",
-        client: "Projet universitaire",
-        tools: "Notion, Canva, PowerPoint, réseaux sociaux"
-      },
-      {
-        title: "Schmide Visuals",
-        tagline: "Photographie & vidéo freelance",
-        desc: "Création de contenus photo et vidéo : portraits, événements, sport, propositions commerciales et retouches.",
-        role: "Photographie, vidéo, retouche, relation client",
-        client: "Projet personnel / freelance",
-        tools: "Sony ZV-E10, Lightroom, Photoshop, Premiere Pro"
-      }
-    ],
-  },
+
+    {
+      cat: "Gestion de projet",
+      items: [
+        "Planification & coordination",
+        "Gestion des parties prenantes",
+        "Suivi de production",
+        "Déploiement international",
+        "Gestion des priorités",
+        "Suivi des résultats"
+      ]
+    },
+
+    {
+      cat: "Audiovisuel & médias",
+      items: [
+        "Production vidéo",
+        "Montage",
+        "Photographie",
+        "Interviews",
+        "Étalonnage",
+        "Sous-titrage multilingue"
+      ]
+    },
+
+    {
+      cat: "Digital & web",
+      items: [
+        "HTML / CSS / JavaScript",
+        "Responsive Design",
+        "Accessibilité",
+        "UX / UI",
+        "Figma",
+        "Microsoft 365 / SharePoint"
+      ]
+    }
+  ],
+
+  soft: [
+    "Autonomie",
+    "Organisation",
+    "Esprit d'équipe",
+    "Communication interculturelle",
+    "Créativité",
+    "Force de proposition",
+    "Adaptabilité",
+    "Résolution de problèmes"
+  ]
+},
+
+projectsPage: {
+  label: "03 — Mes projets",
+  title: "Ce que j’ai réalisé",
+  pageTitle: "Mes projets",
+  pageIntro: "Une sélection de projets professionnels, universitaires et personnels mêlant communication, coordination, audiovisuel et digital.",
+  viewAll: "Voir tous les projets →",
+  viewProject: "Voir le projet",
+
+  badgePro: "Professionnel",
+  badgeSchool: "Académique",
+  badgePersonal: "Personnel",
+
+  filterAll: "Tous",
+  filterPro: "Professionnels",
+  filterSchool: "Académiques",
+  filterPersonal: "Personnels",
+
+  list: [
+    {
+      title: "Stellantis — Communication interne",
+      company: "Stellantis MEA",
+      tagline: "Communication digitale & coordination",
+      desc: "Coordination de projets de communication interne, de campagnes wellbeing et de contenus déployés à l'échelle internationale.",
+      tags: [
+        "Communication interne",
+        "Gestion de projet",
+        "Reporting",
+        "Création de contenus"
+      ],
+      role: "Coordination, contenus et reporting",
+      client: "Stellantis MEA",
+      tools: "Canva, PowerPoint, Teams, SharePoint, Excel"
+    },
+
+    {
+      title: "MEA Moves — Employee Engagement Campaign",
+      company: "Stellantis MEA",
+      tagline: "Challenge collaborateur international",
+      desc: "Coordination de plusieurs éditions d'un challenge autour de l'activité physique et de l'engagement des collaborateurs.",
+      tags: [
+        "Gestion de projet",
+        "Communication",
+        "KPI",
+        "International"
+      ],
+      role: "Pilotage, communication et suivi KPI",
+      client: "Stellantis MEA",
+      tools: "SquadEasy, Excel, PowerPoint, Canva"
+    },
+
+    {
+      title: "Zen Break — Wellbeing Program",
+      company: "Stellantis MEA",
+      tagline: "Programme de bien-être collaborateur",
+      desc: "Déploiement d'un programme de pauses bien-être avec communication, suivi des participations et analyse de la satisfaction.",
+      tags: [
+        "Coordination",
+        "Wellbeing",
+        "Communication",
+        "Analyse"
+      ],
+      role: "Coordination, communication et analyse",
+      client: "Stellantis MEA",
+      tools: "Forms, Excel, Canva, PowerPoint"
+    },
+
+    {
+      title: "Quand la Corée joue",
+      company: "Université Gustave Eiffel",
+      tagline: "Documentaire",
+      desc: "Documentaire sur la société coréenne à travers les pratiques de jeu de plusieurs générations.",
+      tags: [
+        "Documentaire",
+        "Réalisation",
+        "Montage",
+        "Sous-titrage"
+      ],
+      role: "Recherche, réalisation, montage et sous-titrage",
+      client: "Projet universitaire",
+      tools: "Premiere Pro, Audition, SRT"
+    },
+
+    {
+      title: "Cellule Communication",
+      company: "Master CMW",
+      tagline: "Digital Communication Strategy",
+      desc: "Conception d'une stratégie digitale mêlant analyse, recommandations, création de contenus et expérience web.",
+      tags: [
+        "Stratégie digitale",
+        "UX/UI",
+        "Contenus",
+        "Gestion de projet"
+      ],
+      role: "Stratégie, contenus et analyse",
+      client: "Projet universitaire",
+      tools: "Notion, Canva, PowerPoint, HTML, CSS"
+    },
+
+    {
+      title: "Schmide Visuals",
+      company: "Projet personnel",
+      tagline: "Creative Work",
+      desc: "Création de contenus photographiques et audiovisuels pour des portraits, événements, projets sportifs et collaborations.",
+      tags: [
+        "Photographie",
+        "Vidéo",
+        "Post-production",
+        "Relation client"
+      ],
+      role: "Photographie, vidéo et post-production",
+      client: "Projet personnel et freelance",
+      tools: "Sony ZV-E10, Lightroom, Photoshop, Premiere Pro"
+    }
+  ]
+},
+
     contact: {
-      label: "Parlons-en",
+      label: "04 — Parlons-en",
       title: "Me contacter",
       desc: "Une opportunité, un projet de communication ou une collaboration ? N'hésitez pas à me contacter.",
       infoTitle: "Retrouvez-moi sur",

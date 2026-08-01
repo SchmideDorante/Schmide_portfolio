@@ -34,7 +34,7 @@
       </a>
 
       <ul class="nav-menu" id="nav-menu">
-        <li><a href="index.html#about" class="nav-link" data-i18n="nav.about">À propos</a></li>
+        <li><a href="index.html#about" class="nav-link" data-i18n="nav.about">Mon parcours</a></li>
         <li><a href="index.html#skills" class="nav-link" data-i18n="nav.skills">Compétences</a></li>
         <li><a href="index.html#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
         <li><a href="index.html" class="nav-link nav-link-highlight" data-i18n="nav.back">Retour à l'accueil</a></li>
@@ -63,48 +63,89 @@
   </header>
 
   <main id="main">
-    <section class="section" style="padding-top: calc(var(--nav-h) + 3rem);" aria-labelledby="projects-title">
+    <!-- HERO DE LA PAGE PROJETS -->
+    <section
+      class="projects-page-hero"
+      aria-labelledby="projects-page-title">
       <div class="container">
-        <header class="section-header">
-          <span class="section-label reveal" data-i18n="projects.label">Filmographie &amp; travaux</span>
-          <h1 class="section-title reveal" id="projects-title" data-i18n="projects.title">Mes projets</h1>
-        </header>
-        <section class="featured-project reveal">
-          <div class="featured-content">
-            <span class="featured-label">
-              Featured Experience
-            </span>
-            <h2 class="featured-title">
-              Stellantis — Internal Communication
-            </h2>
-            <p class="featured-desc">
-              Deux années passées à coordonner des projets de communication interne, des campagnes wellbeing et des initiatives digitales à l'échelle Middle East & Africa.
-            </p>
-            <a
-              href="case-study.html?id=stellantis-internal-com"
-              class="btn btn-primary">
-              Voir le case study
-            </a>
-          </div>
-          <div class="featured-image">
-              <img
-                src="assets/img/projects/stellantis/hero.jpg"
-                alt="Stellantis">
-          </div>
-        </section>
-        
-        <div class="filter-bar" id="filter-bar" role="group" aria-label="Filtrer par catégorie">
-          <button class="filter-btn" data-filter="all" aria-pressed="true" data-i18n="projects.filterAll">Tous</button>
-          <button class="filter-btn" data-filter="communication" aria-pressed="false" data-i18n="projects.filterCommunication">Communication</button>
-          <button class="filter-btn" data-filter="video" aria-pressed="false" data-i18n="projects.filterVideo">Audiovisuel</button>
-          <button class="filter-btn" data-filter="photo" aria-pressed="false" data-i18n="projects.filterPhoto">Photographie</button>
-          <button class="filter-btn" data-filter="digital" aria-pressed="false" data-i18n="projects.filterDigital">Digital</button>
-        </div>
-
-        <div class="projects-grid" id="projects-grid" role="list" aria-label="Liste des projets"></div>
-        
+        <span
+          class="projects-page-eyebrow reveal"
+          data-i18n="projectsPage.pageLabel">
+          Portfolio
+        </span>
+        <h1
+          class="projects-page-title reveal"
+          id="projects-page-title"
+          data-i18n="projectsPage.pageTitle">
+          Mes projets
+        </h1>
+        <p
+          class="projects-page-intro reveal reveal-delay-1"
+          data-i18n="projectsPage.pageIntro">
+          Une sélection de projets professionnels, académiques et personnels mêlant communication, coordination, audiovisuel et digital.
+        </p>
       </div>
     </section>
+    <!-- LISTE DES PROJETS -->
+    <section
+      class="section projects-page-body"
+      aria-label="Tous les projets">
+      <div class="container">
+        <a
+          href="index.html"
+          class="projects-back-link reveal"
+          data-i18n="nav.back">
+          ← Retour à l'accueil
+        </a>
+        <div
+          class="filter-bar reveal"
+          id="filter-bar"
+          role="group"
+          aria-label="Filtrer les projets">
+          <button
+            class="filter-btn"
+            type="button"
+            data-filter="all"
+            aria-pressed="true"
+            data-i18n="projectsPage.filterAll">
+            Tous
+          </button>
+          <button
+            class="filter-btn"
+            type="button"
+            data-filter="pro"
+            aria-pressed="false"
+            data-i18n="projectsPage.filterPro">
+            Professionnels
+          </button>
+          <button
+            class="filter-btn"
+            type="button"
+            data-filter="school"
+            aria-pressed="false"
+            data-i18n="projectsPage.filterSchool">
+            Académiques
+          </button>
+          <button
+            class="filter-btn"
+            type="button"
+            data-filter="personal"
+            aria-pressed="false"
+            data-i18n="projectsPage.filterPersonal">
+            Personnels
+          </button>
+        </div>
+        <div
+          class="project-cards-grid"
+          id="projects-grid"
+          role="list"
+          aria-live="polite"
+          aria-label="Liste des projets">
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
   <footer class="footer">
@@ -117,9 +158,9 @@
         <nav class="footer-nav" aria-label="Pied de page">
           <p class="footer-nav-title" data-i18n="footer.navTitle">Navigation</p>
           <ul>
-            <li><a href="index.html#about" data-i18n="nav.about">À propos</a></li>
+            <li><a href="index.html#about" data-i18n="nav.about">Mon parcours</a></li>
             <li><a href="index.html#skills" data-i18n="nav.skills">Compétences</a></li>
-            <li><a href="index.html" data-i18n="nav.back">Retour à l'accueil</a></li>
+            <li><a href="index.html" data-i18n="nav.back">← Retour à l'accueil</a></li>
           </ul>
         </nav>
         <div class="footer-contact">

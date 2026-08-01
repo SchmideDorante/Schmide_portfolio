@@ -37,7 +37,7 @@
       </a>
 
       <ul class="nav-menu" id="nav-menu">
-        <li><a href="#about" class="nav-link" data-i18n="nav.about">À propos</a></li>
+        <li><a href="#about" class="nav-link" data-i18n="nav.about">Mon parcours</a></li>
         <li><a href="#skills" class="nav-link" data-i18n="nav.skills">Compétences</a></li>
         <li><a href="#projects" class="nav-link" data-i18n="nav.projects">Projets</a></li>
         <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
@@ -70,12 +70,18 @@
     <!-- HERO -->
     <section class="hero" id="hero" aria-label="Introduction">
       <div class="hero-grain" aria-hidden="true"></div>
-      <canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
+      <canvas
+        class="hero-canvas"
+        id="hero-canvas"
+        aria-hidden="true">
+      </canvas>
       <div class="hero-inner">
-        <div>
+        <div class="hero-content">
           <p class="hero-eyebrow">
             <span class="rec-dot" aria-hidden="true"></span>
-            <span data-i18n="hero.greeting">Bonjour, je suis</span>
+            <span data-i18n="hero.greeting">
+              Bonjour, je suis
+            </span>
           </p>
           <h1 class="hero-title">
             Schmide <span class="accent">Dorante</span>
@@ -84,12 +90,63 @@
             J'accompagne des projets de communication de leur conception à leur réalisation.
           </p>
           <div class="hero-cta">
-            <a class="btn btn-outline" href="#projects" data-i18n="hero.ctaReel">Découvrir mes projets</a>
-            <a class="btn btn-primary" data-site-cv download data-i18n="hero.ctaCv">Télécharger mon CV</a>
+            <a
+              href="#projects"
+              class="btn btn-primary"
+              data-i18n="hero.ctaReel">
+              Découvrir mes projets
+            </a>
+            <a
+              class="btn btn-outline"
+              data-site-cv
+              download
+              data-i18n="hero.ctaCv">
+              Télécharger mon CV
+            </a>
+          </div>
+          <div class="hero-socials">
+            <a
+              class="hero-social-link"
+              data-site-linkedin
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn">
+              <span
+                class="social-linkedin-icon"
+                aria-hidden="true">
+                in
+              </span>
+            </a>
+            <a
+              class="hero-social-link"
+              data-site-email
+              href="#"
+              aria-label="Envoyer un e-mail">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true">
+                <rect
+                  x="3"
+                  y="5"
+                  width="18"
+                  height="14"
+                  rx="2">
+                </rect>
+                <path d="m3 7 9 6 9-6"></path>
+              </svg>
+            </a>
           </div>
         </div>
         <div class="hero-photo" data-cursor-hover>
-          <img src="assets/img/portrait.jpg" alt="Portrait de Schmide Dorante">
+          <img
+            src="assets/img/portrait.jpg"
+            alt="Portrait de Schmide Dorante">
         </div>
       </div>
       <div class="ticker" aria-hidden="true">
@@ -97,181 +154,354 @@
       </div>
     </section>
 
-    <!-- À PROPOS -->
-    <section class="section" id="about" aria-labelledby="about-title">
+    <!-- Mon parcours -->
+    <section class="section about-section" id="about" aria-labelledby="about-title">
       <div class="container">
-        <header class="section-header">
-          <span class="section-label reveal" data-i18n="about.label">Portrait</span>
-          <h2 class="section-title reveal" id="about-title" data-i18n="about.title">À propos de moi</h2>
-        </header>
 
-        <div class="about-grid">
-          <div class="about-text">
-            <p class="reveal" data-i18n="about.p1"></p>
-            <p class="reveal reveal-delay-1" data-i18n="about.p2"></p>
-            <p class="reveal reveal-delay-2" data-i18n="about.p3"></p>
+        <div class="about-layout">
+
+          <div class="about-content">
+            <span class="section-label reveal" data-i18n="about.label">01 — Mon parcours</span>
+
+            <h2 class="section-title reveal" id="about-title" data-i18n="about.title">
+              Transformer des idées en projets
+            </h2>
+
+            <div class="about-text">
+              <p class="reveal" data-i18n="about.p1"></p>
+              <p class="reveal reveal-delay-1" data-i18n="about.p2"></p>
+              <p class="reveal reveal-delay-2" data-i18n="about.p3"></p>
+            </div>
 
             <div class="about-stats">
               <div class="reveal">
-                <span class="about-stat-num">7+</span>
-                <span class="about-stat-label" data-i18n="about.stat1">projets réalisés</span>
-              </div>
-              <div class="reveal reveal-delay-1">
                 <span class="about-stat-num">3+</span>
-                <span class="about-stat-label" data-i18n="about.stat2">ans d'expérience</span>
+                <span class="about-stat-label">ans d'expérience</span>
+              </div>
+
+              <div class="reveal reveal-delay-1">
+                <span class="about-stat-num">10+</span>
+                <span class="about-stat-label">projets réalisés</span>
+              </div>
+
+              <div class="reveal reveal-delay-2">
+                <span class="about-stat-num">6</span>
+                <span class="about-stat-label">pays coordonnés</span>
+              </div>
+
+              <div class="reveal reveal-delay-3">
+                <span class="about-stat-num">2380</span>
+                <span class="about-stat-label">collaborateurs engagés</span>
               </div>
             </div>
           </div>
 
-          <div class="about-visual reveal reveal-delay-1">
-            <!-- 🔧 Remplace ce bloc par ta vraie photo : <img src="assets/img/portrait.jpg" alt="Ton nom"> -->
-            <div class="about-frame">
-              <span class="about-frame-label"><span>PORTRAIT</span><span>35mm</span></span>
-            </div>
+          <div class="about-video reveal reveal-delay-1">
+            <iframe
+              src="https://www.youtube.com/embed/TON_ID_VIDEO"
+              title="Vidéo projet"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+
+            <p class="about-video-caption">
+              Aperçu d’un projet audiovisuel / communication
+            </p>
           </div>
         </div>
-
-        <div class="timeline">
-          <h3 class="timeline-title reveal" data-i18n="about.timelineTitle">Mon parcours</h3>
-          <div class="timeline-items" id="timeline-items"></div>
-        </div>
-      </div>
     </section>
 
     <!-- COMPÉTENCES -->
-    <section class="section section-alt" id="skills" aria-label="Compétences">
+    <section class="section section-alt" id="skills" aria-labelledby="skills-title">
       <div class="container">
+
         <header class="section-header">
-          <span class="section-label reveal" data-i18n="skills.label">Boîte à outils</span>
+          <span
+            class="section-label reveal"
+            data-i18n="skills.label">
+            02 — Compétences
+          </span>
+
+          <h2
+            class="section-title reveal"
+            id="skills-title"
+            data-i18n="skills.title">
+            Ce que je sais faire
+          </h2>
         </header>
 
-        <div class="skills-grid">
-          <div>
-            <h3 class="skill-hard-title reveal" data-i18n="skills.hardTitle">Compétences techniques</h3>
-            <div class="hard-cards" id="hard-cards"></div>
-          </div>
-          <div>
-            <h3 class="skill-soft-title reveal" data-i18n="skills.softTitle">Qualités personnelles</h3>
-            <div class="soft-panel reveal">
-              <ul class="soft-list" id="soft-list"></ul>
-            </div>
-          </div>
+        <div class="competences-grid" id="hard-cards"></div>
+
+        <div class="soft-skills-block reveal">
+          <h3 class="soft-skills-title" data-i18n="skills.softTitle">
+            Ma façon de travailler
+          </h3>
+
+          <ul class="soft-skills-list" id="soft-list"></ul>
         </div>
+
       </div>
     </section>
 
-    <!-- PROJETS (aperçu) -->
-    <section class="section" id="projects" aria-labelledby="projects-title">
+    <!-- PROJETS -->
+    <section class="section projects-section" id="projects" aria-labelledby="projects-title">
       <div class="container">
         <header class="section-header">
-          <span class="section-label reveal" data-i18n="projects.label">Filmographie &amp; travaux</span>
-          <h2 class="section-title reveal" id="projects-title" data-i18n="projects.title">Mes projets</h2>
+          <span
+            class="section-label reveal"
+            data-i18n="projectsPage.label">
+            03 — Mes projets
+          </span>
+
+          <h2
+            class="section-title reveal"
+            id="projects-title"
+            data-i18n="projectsPage.title">
+            Ce que j’ai réalisé
+          </h2>
         </header>
 
-        <div class="projects-grid" id="projects-grid-home" role="list" aria-label="Projets en vedette"></div>
+        <div
+          class="project-cards-grid"
+          id="projects-grid"
+          role="list"
+          aria-live="polite"
+          aria-label="Liste des projets">
+        </div>
 
         <div class="projects-cta reveal">
-          <a href="projects.html" class="btn btn-outline" data-i18n="projects.viewAll">Voir tous les projets →</a>
+          <a
+            href="projects.html"
+            class="btn btn-outline projects-pill-btn"
+            data-i18n="projectsPage.viewAll">
+            Voir tous les projets →
+          </a>
         </div>
-
-        <div class="project-detail" id="project-detail">
-          <div class="container detail-inner">
-            <div class="detail-header">
-              <div>
-                <span class="detail-tagline" id="detail-tagline"></span>
-                <h3 class="detail-title" id="detail-title"></h3>
-              </div>
-              <button class="detail-close" id="detail-close" aria-label="Fermer">✕</button>
-            </div>
-            <div class="detail-body">
-              <div class="detail-visual" id="detail-visual"></div>
-              <div>
-                <dl class="detail-meta">
-                  <div class="detail-meta-item"><dt id="detail-role-label"></dt><dd id="detail-role-value"></dd></div>
-                  <div class="detail-meta-item"><dt id="detail-client-label"></dt><dd id="detail-client-value"></dd></div>
-                  <div class="detail-meta-item"><dt id="detail-year-label"></dt><dd id="detail-year-value"></dd></div>
-                  <div class="detail-meta-item"><dt id="detail-tools-label"></dt><dd id="detail-tools-value"></dd></div>
-                </dl>
-                <p class="detail-desc" id="detail-desc"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- CONTACT -->
     <section class="section contact" id="contact" aria-labelledby="contact-title">
       <div class="container">
-        <header class="section-header">
-          <span class="section-label reveal" data-i18n="contact.label">Parlons‑en</span>
-          <h2 class="section-title reveal" id="contact-title" data-i18n="contact.title">Me contacter</h2>
-          <p class="section-desc reveal" data-i18n="contact.desc"></p>
+        <header class="contact-header">
+          <span
+            class="contact-eyebrow reveal"
+            data-i18n="contact.label">
+            Parlons-en
+          </span>
+
+          <h2
+            class="contact-title reveal"
+            id="contact-title"
+            data-i18n="contact.title">
+            Me contacter
+          </h2>
+
+          <p
+            class="contact-intro reveal reveal-delay-1"
+            data-i18n="contact.desc">
+            N'hésitez pas à me contacter pour un projet, une opportunité ou simplement pour échanger.
+          </p>
         </header>
 
-        <div class="contact-grid">
-          <div class="reveal">
-            <a class="contact-email" href="#" data-site-email>email@example.com</a>
-            <p class="footer-nav-title" data-i18n="contact.infoTitle" style="margin-top:1.5rem;">Retrouvez‑moi sur</p>
-            <div style="margin-top:1rem;">
-              <div class="contact-item"><a href="#" data-site-linkedin target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
-              <div class="contact-item"><a href="#" data-site-instagram target="_blank" rel="noopener noreferrer">Instagram</a></div>
-              <div class="contact-item"><a href="#" data-site-vimeo target="_blank" rel="noopener noreferrer">Vimeo</a></div>
+        <div class="contact-content">
+
+          <div class="contact-details reveal">
+            <h3 class="contact-details-title">
+              Retrouvez-moi sur
+            </h3>
+
+            <div class="contact-link-list">
+
+              <a
+                class="contact-social-link"
+                data-site-email
+                href="mailto:schmidedorante@gmail.com">
+                <span class="contact-social-icon" aria-hidden="true">
+                  <svg
+                    width="17"
+                    height="17"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                    <path d="m3 7 9 6 9-6"></path>
+                  </svg>
+                </span>
+                <span data-site-email-text>schmidedorante@gmail.com</span>                
+              </a>
+
+              <a
+                class="contact-social-link"
+                data-site-linkedin
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer">
+                <span class="contact-social-icon contact-linkedin-icon" aria-hidden="true">in</span>
+                <span>LinkedIn — Schmide Dorante</span>
+              </a>
+
             </div>
           </div>
 
-          <form class="reveal reveal-delay-1" id="contact-form" novalidate aria-label="Formulaire de contact">
+          <form class="contact-form reveal reveal-delay-1" id="contact-form">
+
             <div class="form-group">
-              <label class="form-label" for="name" data-i18n="contact.formName">Nom</label>
-              <input class="form-input" type="text" id="name" name="name" required autocomplete="name" data-i18n-ph="contact.formNamePh" />
-              <span class="form-error" id="name-error" aria-live="polite"></span>
+              <label class="form-label" for="contact-name">
+                Nom *
+              </label>
+
+              <input
+                class="form-input"
+                id="contact-name"
+                name="name"
+                type="text"
+                placeholder="Votre nom complet"
+                required>
             </div>
+
             <div class="form-group">
-              <label class="form-label" for="email" data-i18n="contact.formEmail">E‑mail</label>
-              <input class="form-input" type="email" id="email" name="email" required autocomplete="email" data-i18n-ph="contact.formEmailPh" />
-              <span class="form-error" id="email-error" aria-live="polite"></span>
+              <label class="form-label" for="contact-email">
+                E-mail *
+              </label>
+
+              <input
+                class="form-input"
+                id="contact-email"
+                name="email"
+                type="email"
+                placeholder="votre@email.com"
+                required>
             </div>
+
             <div class="form-group">
-              <label class="form-label" for="message" data-i18n="contact.formMessage">Message</label>
-              <textarea class="form-input" id="message" name="message" rows="4" required data-i18n-ph="contact.formMessagePh"></textarea>
-              <span class="form-error" id="message-error" aria-live="polite"></span>
+              <label class="form-label" for="contact-message">
+                Message *
+              </label>
+
+              <textarea
+                class="form-input form-textarea"
+                id="contact-message"
+                name="message"
+                rows="7"
+                placeholder="Votre message..."
+                required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary" data-i18n="contact.send">Envoyer</button>
-            <p class="form-success" id="form-success" role="status"></p>
+
+            <button class="btn btn-primary contact-submit" type="submit">
+              Envoyer
+            </button>
+
+            <p class="form-success" id="form-success" role="status">
+              Merci pour votre message.
+            </p>
+
           </form>
         </div>
       </div>
     </section>
-
   </main>
 
   <!-- FOOTER -->
-  <footer class="footer">
+    <footer class="footer">
     <div class="container">
-      <div class="footer-grid">
-        <div>
-          <span class="footer-logo" data-site-name>Schmide Dorante</span>
-          <p class="footer-tagline" data-i18n="footer.tagline">Réalisatrice &amp; Monteuse</p>
+      <div class="footer-top">
+
+        <div class="footer-identity">
+          <span class="footer-logo" data-site-name> Schmide Dorante </span>
+          <p class="footer-tagline" data-i18n="footer.tagline"> Communication digitale &amp; projets créatifs</p>
+          <div class="footer-socials">
+            <a
+              class="footer-social-link"
+              data-site-linkedin
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn">
+              <span class="social-linkedin-icon" aria-hidden="true">in</span>
+            </a>
+            <a
+              class="footer-social-link"
+              data-site-email
+                href="#"
+                aria-label="Envoyer un e-mail">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true">
+                <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                <path d="m3 7 9 6 9-6"></path>
+              </svg>
+            </a>
+          </div>
         </div>
-        <nav class="footer-nav" aria-label="Pied de page">
-          <p class="footer-nav-title" data-i18n="footer.navTitle">Navigation</p>
+        
+        <nav class="footer-nav" aria-label="Navigation du pied de page">
+          <p class="footer-nav-title">  Navigation</p>
           <ul>
-            <li><a href="#about" data-i18n="nav.about">À propos</a></li>
-            <li><a href="#skills" data-i18n="nav.skills">Compétences</a></li>
-            <li><a href="projects.html" data-i18n="nav.allProjects">Tous les projets</a></li>
+            <li>
+              <a href="#about" data-i18n="nav.about">
+                Mon parcours
+              </a>
+            </li>
+
+            <li>
+              <a href="#skills" data-i18n="nav.skills">
+                Compétences
+              </a>
+            </li>
+            <li>
+              <a href="#contact" data-i18n="nav.contact">
+                Contact
+              </a>
+            </li>
+
+            <li>
+              <a href="projects.html" data-i18n="nav.allProjects">
+                Tous les projets →
+              </a>
+            </li>
           </ul>
         </nav>
         <div class="footer-contact">
-          <p class="footer-nav-title" data-i18n="footer.contactTitle">Contact</p>
+          <p class="footer-nav-title">Contact</p>
           <ul>
-            <li><a href="#" data-site-email>email@example.com</a></li>
-            <li><a href="#" data-site-linkedin target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li>
+                <a
+                    data-site-email href="#">
+                    <span data-site-email-text>schmidedorante@gmail.com</span>
+                </a>
+            </li>
+            <li>
+              <a
+                data-site-linkedin
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer">
+                LinkedIn
+              </a>
+            </li>
           </ul>
         </div>
+
       </div>
       <div class="footer-bottom">
-        <p data-i18n="footer.copyright">© 2026 Schmide Dorante — Tous droits réservés.</p>
-        <a href="mentions-legales.html" data-i18n="footer.legal">Mentions légales</a>
+        <p>
+          © <span id="footer-year">2026</span>
+          Schmide Dorante — Tous droits réservés.
+        </p>
+        <a href="mentions-legales.html" data-i18n="footer.legal">
+          Mentions légales
+        </a>
       </div>
     </div>
   </footer>

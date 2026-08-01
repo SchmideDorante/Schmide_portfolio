@@ -13,12 +13,6 @@
   const $ = (sel, ctx) => (ctx || document).querySelector(sel);
   const $$ = (sel, ctx) => Array.from((ctx || document).querySelectorAll(sel));
 
-  /* ---------------- Merge project metadata + translated project text ---------------- */
-  function getProjects(lang) {
-    const texts = CONTENT[lang].projects.list;
-    return PROJECT_META.map((meta, i) => Object.assign({}, meta, texts[i]));
-  }
-
   /* ---------------- Loader ---------------- */
   function initLoader() {
     const loader = $("#loader");
@@ -61,7 +55,7 @@
       requestAnimationFrame(loop);
     })();
 
-    const hoverables = "a, button, input, textarea, .film-frame, [data-cursor-hover]";
+    const hoverables = "a, button, input, textarea, .project-card, [data-cursor-hover]";
     document.addEventListener("mouseover", (e) => {
       if (e.target.closest(hoverables)) ring.classList.add("hover");
     });
@@ -131,76 +125,155 @@
     return div.innerHTML;
   }
 
-  /* ---------------- Rendu des projets (grille "planche-contact") ---------------- */
+  /* ---------------- Rendu des projets ---------------- */
+
+function getProjects(lang) {
+  const languageContent =
+    CONTENT[lang] || CONTENT.fr;
+
+  const texts =
+    languageContent.projectsPage?.list ||
+    CONTENT.fr.projectsPage.list;
+
+  return PROJECT_META.map((meta, index) => ({
+    ...meta,
+    ...texts[index]
+  }));
+}
+  
   function frameColor(hue) {
     return `linear-gradient(155deg, hsl(${hue} 38% 30%), hsl(${hue} 55% 16%) 75%)`;
   }
 
-  function projectCardHTML(project, lang) {
-    const t = CONTENT[lang].projects;
-    const typeLabel = { communication: t.filterCommunication, video: t.filterVideo, photo: t.filterPhoto, digital: t.filterDigital }[project.type];
+function getProjectBadgeLabel(project, lang) {
+  const content =
+    CONTENT[lang]?.projectsPage ||
+    CONTENT.fr.projectsPage;
+
+  const labels = {
+    pro: content.badgePro,
+    school: content.badgeSchool,
+    personal: content.badgePersonal
+  };
+
+  return labels[project.badge] || "";
+}
+
+function getProjectBadgeClass(project) {
+  const badge = project.badge || "pro";
+
+  return `project-card-badge project-card-badge-${badge}`;
+}
+
+function projectImageMarkup(project) {
+  const initials = String(project.title || project.id)
+    .slice(0, 2)
+    .toUpperCase();
+
+  if (!project.thumbnail) {
     return `
-      <button class="film-frame reveal" type="button" data-id="${project.id}" aria-haspopup="true">
-        <span class="frame-visual">
-          <span class="frame-sprockets" aria-hidden="true">${"<span></span>".repeat(10)}</span>
-          <span class="frame-color" style="background:${frameColor(project.hue)}">
-            <span class="frame-tag">${escapeHtml(typeLabel)}</span>
-            <span class="frame-edge">${escapeHtml(project.year)}</span>
-          </span>
-          <span class="frame-sprockets" aria-hidden="true">${"<span></span>".repeat(10)}</span>
-          <span class="frame-overlay">${escapeHtml(t.viewProject)} →</span>
-        </span>
-        <span class="frame-body">
-          <span class="frame-title">${escapeHtml(project.title)}</span>
-          <span class="frame-tagline">${escapeHtml(project.tagline)}</span>
-        </span>
-      </button>`;
+      <div
+        class="project-card-placeholder"
+        style="background:${frameColor(project.hue)}">
+        ${escapeHtml(initials)}
+      </div>
+    `;
   }
 
-  function renderProjectsGrid(gridId, lang, filter, limit) {
-    const grid = document.getElementById(gridId);
-    if (!grid) return;
-    let projects = getProjects(lang);
-    if (filter && filter !== "all") projects = projects.filter((p) => p.type === filter);
-    if (limit) projects = projects.slice(0, limit);
-    grid.innerHTML = projects.map((p) => projectCardHTML(p, lang)).join("");
-    $$(".film-frame", grid).forEach((btn) =>
-      btn.addEventListener("click", () => {
-        window.location.href = `case-study.html?id=${btn.dataset.id}`;
-      })
+  return `
+    <img
+      src="${escapeHtml(project.thumbnail)}"
+      alt=""
+      class="project-card-image"
+      loading="lazy"
+      onerror="
+        this.style.display='none';
+        this.nextElementSibling.style.display='flex';
+      "
+    >
+
+    <div
+      class="project-card-placeholder"
+      style="display:none; background:${frameColor(project.hue)}">
+      ${escapeHtml(initials)}
+    </div>
+  `;
+}
+
+function renderProjectsGrid(gridId, lang, filter = "all", limit = null) {
+  const grid = document.getElementById(gridId);
+
+  if (!grid) return;
+
+  let projects = getProjects(lang);
+
+  if (filter !== "all") {
+    projects = projects.filter(
+      (project) => project.badge === filter
     );
   }
 
-  function openDetail(id) {
-    const panel = $("#project-detail");
-    if (!panel) return;
-    const project = getProjects(currentLang).find((p) => p.id === id);
-    if (!project) return;
-    const t = CONTENT[currentLang].projects;
-
-    $("#detail-tagline", panel).textContent = project.tagline;
-    $("#detail-title", panel).textContent = project.title;
-    $("#detail-visual", panel).style.background = frameColor(project.hue);
-    $("#detail-desc", panel).textContent = project.desc;
-    $("#detail-role-label", panel).textContent = t.role;
-    $("#detail-role-value", panel).textContent = project.role;
-    $("#detail-client-label", panel).textContent = t.client;
-    $("#detail-client-value", panel).textContent = project.client;
-    $("#detail-year-label", panel).textContent = t.year;
-    $("#detail-year-value", panel).textContent = project.year;
-    $("#detail-tools-label", panel).textContent = t.tools;
-    $("#detail-tools-value", panel).textContent = project.tools;
-
-    panel.classList.add("open");
-    panel.scrollIntoView({ behavior: "smooth", block: "start" });
+  if (limit) {
+    projects = projects.slice(0, limit);
   }
 
-  function initDetailClose() {
-    const closeBtn = $("#detail-close");
-    if (closeBtn) {
-      closeBtn.addEventListener("click", () => $("#project-detail").classList.remove("open"));
-    }
-  }
+  grid.innerHTML = projects
+    .map(
+      (project, index) => `
+        <article
+          class="project-card reveal reveal-delay-${Math.min(index, 4)}"
+          role="listitem">
+
+          <a
+            href="case-study.html?id=${encodeURIComponent(project.id)}"
+            class="project-card-link"
+            aria-label="Voir le projet : ${escapeHtml(project.title)}">
+          </a>
+
+          <div class="project-card-media">
+            ${projectImageMarkup(project)}
+
+            <div class="project-card-overlay"></div>
+
+            <span class="${getProjectBadgeClass(project)}">
+              ${escapeHtml(getProjectBadgeLabel(project, lang))}
+            </span>
+          </div>
+
+          <div class="project-card-content">
+            <div class="project-card-meta">
+              <span class="project-card-company">
+                ${escapeHtml(project.company || project.client || "")}
+              </span>
+
+              <span class="project-card-year">
+                ${escapeHtml(project.year)}
+              </span>
+            </div>
+
+            <h3 class="project-card-title">
+              ${escapeHtml(project.title)}
+            </h3>
+
+            <p class="project-card-description">
+              ${escapeHtml(project.desc || "")}
+            </p>
+
+            <div class="project-card-tags">
+              ${(project.tags || [])
+                .map(
+                  (tag) => `<span>${escapeHtml(tag)}</span>`
+                )
+                .join("")}
+            </div>
+          </div>
+        </article>
+      `
+    )
+    .join("");
+
+  initReveal();
+}
 
   /* ---------------- Filtres (page projets) ---------------- */
   function initFilters() {
@@ -211,7 +284,6 @@
         $$(".filter-btn", bar).forEach((b) => b.setAttribute("aria-pressed", "false"));
         btn.setAttribute("aria-pressed", "true");
         renderProjectsGrid("projects-grid", currentLang, btn.dataset.filter);
-        $("#project-detail")?.classList.remove("open");
       });
     });
   }
@@ -262,46 +334,90 @@
 
     // Skills
     const hardEl = $("#hard-cards");
+
     if (hardEl) {
       hardEl.innerHTML = c.skills.hard
         .map(
-          (cat) => `
-        <div class="hard-card reveal">
-          <span class="hard-card-cat">${escapeHtml(cat.cat)}</span>
-          <ul class="hard-card-list">${cat.items.map((it) => `<li>${escapeHtml(it)}</li>`).join("")}</ul>
-        </div>`
+          (cat, index) => `
+            <article class="competence-column reveal reveal-delay-${Math.min(index, 4)}">
+              <h3 class="competence-category">
+                ${escapeHtml(cat.cat)}
+              </h3>
+
+              <ul class="competence-list">
+                ${cat.items
+                  .map((item) => `<li>${escapeHtml(item)}</li>`)
+                  .join("")}
+              </ul>
+            </article>
+          `
         )
         .join("");
+
       initReveal();
     }
+
     const softEl = $("#soft-list");
+
     if (softEl) {
-      softEl.innerHTML = c.skills.soft.map((s) => `<li>${escapeHtml(s)}</li>`).join("");
+      softEl.innerHTML = c.skills.soft
+        .map((skill) => `<li>${escapeHtml(skill)}</li>`)
+        .join("");
     }
 
     // Projects grids
-    if ($("#projects-grid-home")) renderProjectsGrid("projects-grid-home", lang, "all", 3);
-    if ($("#projects-grid")) {
-      const activeFilter = $("#filter-bar .filter-btn[aria-pressed='true']");
-      renderProjectsGrid("projects-grid", lang, activeFilter ? activeFilter.dataset.filter : "all");
-    }
-    $("#project-detail")?.classList.remove("open");
+    const projectsGrid = $("#projects-grid");
 
+    if (projectsGrid) {
+      const activeFilter = $(
+        "#filter-bar .filter-btn[aria-pressed='true']"
+      );
+
+      const filter = activeFilter
+        ? activeFilter.dataset.filter
+        : "all";
+
+      renderProjectsGrid("projects-grid", lang, filter);
+    }
     initReveal();
   }
 
   function bindContactInfo() {
     $$("[data-site-email]").forEach((el) => {
-      el.textContent = SITE.email;
-      if (el.tagName === "A") el.href = "mailto:" + SITE.email;
+      if (el.tagName === "A") {
+        el.href = "mailto:" + SITE.email;
+      }
     });
-    $$("[data-site-linkedin]").forEach((el) => (el.href = SITE.socials.linkedin));
-    $$("[data-site-instagram]").forEach((el) => (el.href = SITE.socials.instagram));
-    $$("[data-site-vimeo]").forEach((el) => (el.href = SITE.socials.vimeo));
-    $$("[data-site-cv]").forEach((el) => (el.href = SITE.cvFile));
-    $$("[data-site-name]").forEach((el) => (el.textContent = `${SITE.firstName} ${SITE.lastName}`));
+
+    $$("[data-site-email-text]").forEach((el) => {
+      el.textContent = SITE.email;
+    });
+
+    $$("[data-site-linkedin]").forEach((el) => {
+      el.href = SITE.socials.linkedin;
+    });
+
+    $$("[data-site-instagram]").forEach((el) => {
+      el.href = SITE.socials.instagram;
+    });
+
+    $$("[data-site-vimeo]").forEach((el) => {
+      el.href = SITE.socials.vimeo;
+    });
+
+    $$("[data-site-cv]").forEach((el) => {
+      el.href = SITE.cvFile;
+    });
+
+    $$("[data-site-name]").forEach((el) => {
+      el.textContent = `${SITE.firstName} ${SITE.lastName}`;
+    });
+
     const year = $("#footer-year");
-    if (year) year.textContent = new Date().getFullYear();
+
+    if (year) {
+      year.textContent = new Date().getFullYear();
+    }
   }
 
   /* ---------------- Langue ---------------- */
@@ -322,41 +438,65 @@
   /* ---------------- Formulaire de contact (démo, sans backend) ---------------- */
   function initContactForm() {
     const form = $("#contact-form");
+
     if (!form) return;
+
     form.addEventListener("submit", (e) => {
       e.preventDefault();
+
       const t = CONTENT[currentLang].contact;
+
+      const name = $("#contact-name", form);
+      const email = $("#contact-email", form);
+      const message = $("#contact-message", form);
+      const success = $("#form-success");
+
+      if (!name || !email || !message) {
+        console.error("Un ou plusieurs champs du formulaire sont introuvables.");
+        return;
+      }
+
       let valid = true;
-      const name = $("#name", form);
-      const email = $("#email", form);
-      const message = $("#message", form);
 
       [name, message].forEach((field) => {
         const errorEl = $("#" + field.id + "-error");
+
         if (!field.value.trim()) {
-          errorEl.textContent = t.errorRequired;
+          if (errorEl) {
+            errorEl.textContent = t.errorRequired;
+          }
+
           valid = false;
-        } else {
+        } else if (errorEl) {
           errorEl.textContent = "";
         }
       });
-      const emailError = $("#email-error");
+
+      const emailError = $("#contact-email-error");
+
       if (!email.value.trim()) {
-        emailError.textContent = t.errorRequired;
+        if (emailError) {
+          emailError.textContent = t.errorRequired;
+        }
+
         valid = false;
       } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
-        emailError.textContent = t.errorEmail;
+        if (emailError) {
+          emailError.textContent = t.errorEmail;
+        }
+
         valid = false;
-      } else {
+      } else if (emailError) {
         emailError.textContent = "";
       }
 
       if (!valid) return;
 
-      // 🔧 Pas de backend branché : à connecter à un service (Formspree, EmailJS, etc.)
-      const success = $("#form-success");
-      success.textContent = t.success;
-      success.classList.add("show");
+      if (success) {
+        success.textContent = t.success;
+        success.classList.add("show");
+      }
+
       form.reset();
     });
   }
@@ -416,53 +556,6 @@ function initScrollIndicator() {
 }
 
   /* ---------------- Init ---------------- */
-  function initTyping() {
-  const el = document.getElementById("hero-typed");
-  if (!el) return;
-
-  let phraseIndex = 0;
-  let charIndex = 0;
-  let deleting = false;
-  let timeout;
-
-  function getPhrases() {
-    return CONTENT[currentLang].hero.typed || [];
-  }
-
-  function type() {
-    const phrases = getPhrases();
-    if (!phrases.length) return;
-
-    const phrase = phrases[phraseIndex % phrases.length];
-
-    if (!deleting) {
-      el.textContent = phrase.slice(0, charIndex + 1);
-      charIndex++;
-
-      if (charIndex === phrase.length) {
-        deleting = true;
-        timeout = setTimeout(type, 1500);
-        return;
-      }
-
-      timeout = setTimeout(type, 70);
-    } else {
-      el.textContent = phrase.slice(0, charIndex - 1);
-      charIndex--;
-
-      if (charIndex === 0) {
-        deleting = false;
-        phraseIndex++;
-        timeout = setTimeout(type, 350);
-        return;
-      }
-
-      timeout = setTimeout(type, 35);
-    }
-  }
-
-  type();
-}
   document.addEventListener("DOMContentLoaded", () => {
     initLoader();
     initTheme();
