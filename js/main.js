@@ -1,7 +1,4 @@
-/* ==========================================================================
-   PORTFOLIO — main.js
-   Dépend de content.js (chargé avant ce fichier).
-   ========================================================================== */
+/* PORTFOLIO — main.js */
 (function () {
   "use strict";
 
@@ -9,28 +6,29 @@
   const DEFAULT_LANG = "fr";
   const savedLang = localStorage.getItem("lang");
   let currentLang = LANGS.includes(savedLang) ? savedLang : DEFAULT_LANG;
+  let typingTimer = null;
 
   const $ = (sel, ctx) => (ctx || document).querySelector(sel);
   const $$ = (sel, ctx) => Array.from((ctx || document).querySelectorAll(sel));
 
   /* ---------------- Loader ---------------- */
   function initLoader() {
-    const loader = $("#loader");
+    const loader = document.getElementById("loader");
+
     if (!loader) return;
-    const countEl = $("#loader-count");
-    let n = 3;
-    if (countEl) countEl.textContent = n;
-    const interval = setInterval(() => {
-      n -= 1;
-      if (countEl) countEl.textContent = n > 0 ? n : "●";
-      if (n <= 0) clearInterval(interval);
-    }, 260);
-    window.addEventListener("load", () => {
-      setTimeout(() => loader.classList.add("done"), 550);
-    });
-    // Fallback si "load" a déjà eu lieu
+
+    const hideLoader = () => {
+      setTimeout(() => {
+        loader.classList.add("hidden");
+      }, 800);
+    };
+
     if (document.readyState === "complete") {
-      setTimeout(() => loader.classList.add("done"), 550);
+      hideLoader();
+    } else {
+      window.addEventListener("load", hideLoader, {
+        once: true
+      });
     }
   }
 
@@ -57,10 +55,10 @@
 
     const hoverables = "a, button, input, textarea, .project-card, [data-cursor-hover]";
     document.addEventListener("mouseover", (e) => {
-      if (e.target.closest(hoverables)) ring.classList.add("hover");
+      if (e.target.closest(hoverables)) ring.classList.add("cursor-hover");
     });
     document.addEventListener("mouseout", (e) => {
-      if (e.target.closest(hoverables)) ring.classList.remove("hover");
+      if (e.target.closest(hoverables)) ring.classList.remove("cursor-hover");
     });
   }
 
@@ -312,26 +310,6 @@ function renderProjectsGrid(gridId, lang, filter = "all", limit = null) {
 
     renderTicker(lang);
 
-    // Timeline (about)
-    const timelineEl = $("#timeline-items");
-    if (timelineEl) {
-      timelineEl.innerHTML = c.timeline
-        .map(
-          (item, i) => `
-        <article class="shot-item reveal reveal-delay-${Math.min(i, 4)}">
-          <span class="shot-code">${escapeHtml(c.about.scLabel)} ${String(i + 1).padStart(2, "0")}</span>
-          <span>
-            <span class="shot-role">${escapeHtml(item.role)}</span>
-            <span class="shot-place">${escapeHtml(item.place)} — ${escapeHtml(item.period)}</span>
-            <span class="shot-desc">${escapeHtml(item.desc)}</span>
-          </span>
-          <span class="shot-type">${escapeHtml(item.type)}</span>
-        </article>`
-        )
-        .join("");
-      initReveal();
-    }
-
     // Skills
     const hardEl = $("#hard-cards");
 
@@ -420,19 +398,33 @@ function renderProjectsGrid(gridId, lang, filter = "all", limit = null) {
     }
   }
 
+  /* ---------------- Sélecteur de langue ---------------- */
+  function initLangSwitcher() {
+    $$(".lang-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        setLang(btn.dataset.lang);
+      });
+    });
+  }
+
   /* ---------------- Langue ---------------- */
   function setLang(lang) {
     if (!LANGS.includes(lang)) return;
     currentLang = lang;
     localStorage.setItem("lang", lang);
-    $$(".lang-btn").forEach((btn) => btn.setAttribute("aria-pressed", String(btn.dataset.lang === lang)));
-    renderStaticText(lang);
-  }
+    $$(".lang-btn").forEach((btn) =>
+      btn.setAttribute(
+        "aria-pressed",
+        String(btn.dataset.lang === lang)
+      )
+    );
 
-  function initLangSwitcher() {
-    $$(".lang-btn").forEach((btn) => {
-      btn.addEventListener("click", () => setLang(btn.dataset.lang));
-    });
+    if (document.getElementById("case-study-root")) {
+      window.location.reload();
+      return;
+    }
+    renderStaticText(lang);
+    initTyping(lang);
   }
 
   /* ---------------- Formulaire de contact (démo, sans backend) ---------------- */
@@ -519,34 +511,220 @@ function renderProjectsGrid(gridId, lang, filter = "all", limit = null) {
 
 function initParticles(canvasId) {
   const canvas = document.getElementById(canvasId);
-  if (!canvas || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (!canvas) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
+
+  const hero = canvas.closest(".hero");
+  if (!hero) return;
   const ctx = canvas.getContext("2d");
-  let particles = [], animId;
-  function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+  let particles = [];
+  let animId;
+  let width = 0;
+  let height = 0;
+  let dpr = 1;
+  const PARTICLE_COUNT = 85;
+
+  function resize() {
+    const rect = hero.getBoundingClientRect();
+    width = rect.width;
+    height = hero.offsetHeight;
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.round(width * dpr);
+    canvas.height = Math.round(height * dpr);
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
   class Particle {
-    constructor() { this.reset(true); }
-    reset(initial) {
-      this.x = Math.random() * canvas.width;
-      this.y = initial ? Math.random() * canvas.height : canvas.height + 10;
-      this.vx = (Math.random() - 0.5) * 0.4;
-      this.vy = -(Math.random() * 0.3 + 0.1);
-      this.r = Math.random() * 1.8 + 0.6;
-      this.a = Math.random() * 0.4 + 0.1;
-      this.colorSeed = Math.random();
+    constructor(initial = true) {
+      this.reset(initial);
     }
-    update() { this.x += this.vx; this.y += this.vy; if (this.y < -5 || this.x < -5 || this.x > canvas.width + 5) this.reset(false); }
+
+    reset(initial = false) {
+      this.x = Math.random() * width;
+      this.y = initial
+        ? Math.random() * height
+        : height + 10;
+      this.vx = (Math.random() - 0.5) * 0.18;
+      this.vy = -(Math.random() * 0.18 + 0.04);
+      this.r = Math.random() * 1.8 + 0.7;
+      this.a = Math.random() * 0.45 + 0.14;
+      this.colorSeed = Math.random();
+      this.pulse = Math.random() * Math.PI * 2;
+    }
+
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      this.pulse += 0.012;
+
+      if (
+        this.y < -10 ||
+        this.x < -10 ||
+        this.x > width + 10
+      ) {
+        this.reset(false);
+      }
+    }
+
     draw() {
-      const isDark = document.documentElement.classList.contains("dark");
-      const color = isDark ? (this.colorSeed > 0.6 ? "#e2565c" : "#d4b64c") : (this.colorSeed > 0.6 ? "#c1272d" : "#8a7a2c");
-      ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-      ctx.fillStyle = color; ctx.globalAlpha = isDark ? Math.min(this.a * 1.6, 0.85) : this.a;
-      ctx.fill(); ctx.globalAlpha = 1;
+      const isDark =
+        document.documentElement.classList.contains("dark");
+      let color;
+      if (isDark) {
+        color =
+          this.colorSeed > 0.58
+            ? "#e2565c"
+            : "#d4b64c";
+      } else {
+        color =
+          this.colorSeed > 0.58
+            ? "#c1272d"
+            : "#8a7a2c";
+      }
+
+      const pulseScale =
+        1 + Math.sin(this.pulse) * 0.15;
+      ctx.beginPath();
+      ctx.arc(
+        this.x,
+        this.y,
+        this.r * pulseScale,
+        0,
+        Math.PI * 2
+      );
+      ctx.fillStyle = color;
+      ctx.globalAlpha = isDark
+        ? Math.min(this.a * 1.5, 0.82)
+        : this.a;
+      ctx.fill();
+      ctx.globalAlpha = 1;
     }
   }
-  function loop() { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); animId = requestAnimationFrame(loop); }
-  resize(); particles = Array.from({ length: 60 }, () => new Particle());
-  new ResizeObserver(() => { cancelAnimationFrame(animId); resize(); loop(); }).observe(canvas.parentElement);
+
+  function createParticles() {
+    particles = Array.from(
+      { length: PARTICLE_COUNT },
+      () => new Particle(true)
+    );
+  }
+
+  function loop() {
+    ctx.clearRect(0, 0, width, height);
+    particles.forEach((particle) => {
+      particle.update();
+      particle.draw();
+    });
+    animId = requestAnimationFrame(loop);
+  }
+
+  function restart() {
+    cancelAnimationFrame(animId);
+    resize();
+    createParticles();
+    loop();
+  }
+  resize();
+  createParticles();
   loop();
+  const resizeObserver = new ResizeObserver(() => {
+    restart();
+  });
+  resizeObserver.observe(hero);
+  window.addEventListener("resize", restart);
+}
+
+/* ---------------- Typing hero ---------------- */
+
+function initTyping(lang = currentLang) {
+  const element = document.getElementById("hero-typed");
+
+  if (!element) return;
+
+  /* Arrête l'animation précédente */
+  if (typingTimer) {
+    clearTimeout(typingTimer);
+    typingTimer = null;
+  }
+
+  const phrases =
+    CONTENT[lang]?.hero?.typed ||
+    CONTENT.fr?.hero?.typed ||
+    [];
+
+  if (!Array.isArray(phrases) || !phrases.length) {
+    element.textContent = "";
+    return;
+  }
+
+  /* Accessibilité : pas d'animation si mouvement réduit */
+  if (
+    window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches
+  ) {
+    element.textContent = phrases[0];
+    return;
+  }
+
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+
+  element.textContent = "";
+
+  function type() {
+    const currentPhrase =
+      phrases[phraseIndex];
+
+    if (!deleting) {
+      charIndex++;
+
+      element.textContent =
+        currentPhrase.slice(0, charIndex);
+
+      if (charIndex === currentPhrase.length) {
+        deleting = true;
+
+        typingTimer = setTimeout(
+          type,
+          1800
+        );
+
+        return;
+      }
+    } else {
+      charIndex--;
+
+      element.textContent =
+        currentPhrase.slice(0, charIndex);
+
+      if (charIndex === 0) {
+        deleting = false;
+
+        phraseIndex =
+          (phraseIndex + 1) %
+          phrases.length;
+
+        typingTimer = setTimeout(
+          type,
+          350
+        );
+
+        return;
+      }
+    }
+
+    typingTimer = setTimeout(
+      type,
+      deleting ? 45 : 75
+    );
+  }
+
+  type();
 }
 
 function initScrollIndicator() {
@@ -570,5 +748,7 @@ function initScrollIndicator() {
 
     $$(".lang-btn").forEach((btn) => btn.setAttribute("aria-pressed", String(btn.dataset.lang === currentLang)));
     renderStaticText(currentLang);
+
+    initTyping(currentLang);
   });
 })();

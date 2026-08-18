@@ -1,9 +1,4 @@
-/* --------------------------------------------------------------
-   2. PROJETS — texte identique dans les 3 langues sauf
-      title / category / tagline / description qui sont traduits
-      plus bas dans CONTENT.<lang>.projects (même ordre, même id).
-      "hue" pilote la couleur de la vignette placeholder.
-   -------------------------------------------------------------- */
+/*2. PROJETS */
 const PROJECT_META = [
   {
     id: "stellantis-internal-com",
@@ -65,3 +60,83 @@ const PROJECT_META = [
     thumbnail: "assets/img/projects/schmide-visuals/cover.jpg"
   }
 ];
+
+/*DONNÉES VISUELLES DES CASE STUDIES*/
+
+const PROJECTS = {
+  "stellantis-internal-com": {
+  accent: "#c1272d",
+
+  heroImage:
+    "assets/img/projects/stellantis/cover.jpg",
+
+  gallery: [
+    "assets/img/projects/stellantis/cover.jpg"
+  ]
+},
+
+  "mea-moves": {
+    accent: "#d77832",
+
+    heroImage:
+      "assets/img/projects/mea-moves/hero.jpg",
+
+    gallery: [
+      "assets/img/projects/mea-moves/gallery-01.jpg",
+      "assets/img/projects/mea-moves/gallery-02.jpg",
+      "assets/img/projects/mea-moves/gallery-03.jpg"
+    ]
+  },
+
+  "zen-break": {
+    accent: "#b48b26",
+
+    heroImage:
+      "assets/img/projects/zen-break/hero.jpg",
+
+    gallery: [
+      "assets/img/projects/zen-break/gallery-01.jpg",
+      "assets/img/projects/zen-break/gallery-02.jpg",
+      "assets/img/projects/zen-break/gallery-03.jpg"
+    ]
+  },
+
+  "when-korea-plays": {
+    accent: "#356f9f",
+
+    heroImage:
+      "assets/img/projects/documentary/hero.jpg",
+
+    gallery: [
+      "assets/img/projects/documentary/gallery-01.jpg",
+      "assets/img/projects/documentary/gallery-02.jpg",
+      "assets/img/projects/documentary/gallery-03.jpg"
+    ]
+  },
+
+  "cellule-communication": {
+    accent: "#7450a8",
+
+    heroImage:
+      "assets/img/projects/cellule/hero.jpg",
+
+    gallery: [
+      "assets/img/projects/cellule/gallery-01.jpg",
+      "assets/img/projects/cellule/gallery-02.jpg",
+      "assets/img/projects/cellule/gallery-03.jpg"
+    ]
+  },
+
+  "schmide-visuals": {
+    accent: "#ad426f",
+
+    heroImage:
+      "assets/img/projects/schmide-visuals/hero.jpg",
+
+    gallery: [
+      "assets/img/projects/schmide-visuals/gallery-01.jpg",
+      "assets/img/projects/schmide-visuals/gallery-02.jpg",
+      "assets/img/projects/schmide-visuals/gallery-03.jpg"
+    ]
+  }
+};

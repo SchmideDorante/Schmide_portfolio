@@ -20,8 +20,8 @@
 <body>
 
   <!-- Loader -->
-  <div class="loader" id="loader" role="status" aria-label="Chargement">
-    <div class="loader-count" id="loader-count">3</div>
+  <div id="loader" role="status" aria-label="Chargement en cours">
+    <div class="loader-content"><span class="loader-initials">DS</span></div>
   </div>
 
   <!-- Curseur personnalisé -->
@@ -38,11 +38,11 @@
       </a>
 
       <ul class="nav-menu" id="nav-menu">
-        <li><a href="#about" class="nav-link" data-i18n="nav.about">À propos</a></li>
-        <li><a href="#skills" class="nav-link" data-i18n="nav.skills">Compétences</a></li>
-        <li><a href="#projects" class="nav-link" data-i18n="nav.projects">Projets</a></li>
-        <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
-        <li><a href="projects.html" class="nav-link nav-link-highlight" data-i18n="nav.allProjects">Tous les projets</a></li>
+        <li><a href="index.html#about" class="nav-link"  data-i18n="nav.about">Mon parcours</a></li>
+        <li><a href="index.html#skills" class="nav-link" data-i18n="nav.skills">Compétences</a></li>
+        <li><a href="index.html#projects" class="nav-link" data-i18n="nav.projects">Projets</a></li>
+        <li><a href="index.html#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
+        <li><a href="projects.html" class="nav-link nav-link-highlight" data-i18n="nav.allProjects">Tous les projets →</a></li>
       </ul>
 
       <div class="nav-actions">
@@ -73,7 +73,7 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-grid">
+      <div class="footer-top">
         <div>
           <span class="footer-logo" data-site-name>Schmide Dorante</span>
           <p class="footer-tagline" data-i18n="footer.tagline">Réalisatrice &amp; Monteuse</p>
@@ -89,7 +89,7 @@
         <div class="footer-contact">
           <p class="footer-nav-title" data-i18n="footer.contactTitle">Contact</p>
           <ul>
-            <li><a href="#" data-site-email>email@example.com</a></li>
+            <li><a data-site-email href="#"><span data-site-email-text>schmidedorante@gmail.com</span></a></li>
             <li><a href="#" data-site-linkedin target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
           </ul>
         </div>
